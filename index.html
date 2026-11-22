@@ -1,0 +1,1935 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Muthu Kumar | Photographer, Videographer & Video Editor</title>
+  <meta name="description" content="Official portfolio of Muthu Kumar - Photographer, Videographer, and Video Editor. Cinematic visuals and creative storytelling based in Tamil Nadu, India.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23f59e0b'/><text x='50%' y='62%' font-size='46' font-family='sans-serif' font-weight='900' fill='%230a0b0e' text-anchor='middle'>MK</text></svg>">
+
+  <!-- Google Fonts: Inter, Syne (Cinematic), Noto Sans Tamil -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800;900&family=Noto+Sans+Tamil:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Tailwind CSS CDN + Configuration -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            dark: '#07090e',
+            'dark-surface': '#0f131d',
+            'dark-card': '#151a27',
+            'dark-elevated': '#1b2131',
+            amber: {
+              300: '#fcd34d',
+              400: '#fbbf24',
+              500: '#f59e0b',
+              600: '#d97706',
+            }
+          },
+          fontFamily: {
+            heading: ['Syne', 'Cinzel', 'sans-serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            tamil: ['Noto Sans Tamil', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-dark text-slate-200 antialiased selection:bg-amber-500 selection:text-black">
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="fixed top-6 right-6 z-50 flex flex-col gap-3 pointer-events-none"></div>
+
+  <!-- Background Ambient Glow & Grid -->
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div class="ambient-glow ambient-glow-1"></div>
+    <div class="ambient-glow ambient-glow-2"></div>
+    <div class="cinematic-grid"></div>
+  </div>
+
+  <!-- NAVIGATION HEADER -->
+  <header id="main-header" class="fixed top-0 left-0 right-0 z-40 transition-all duration-300 py-4 px-4 sm:px-8">
+    <div class="max-w-7xl mx-auto flex items-center justify-between backdrop-blur-md bg-dark-surface/80 border border-slate-800/80 rounded-2xl px-5 py-3 shadow-2xl">
+      <!-- Logo -->
+      <a href="#hero" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 to-amber-300 flex items-center justify-center font-black text-dark text-lg shadow-lg shadow-amber-500/20 group-hover:scale-105 transition-transform">
+          MK
+        </div>
+        <div>
+          <span class="font-extrabold tracking-wider text-white text-base sm:text-lg block group-hover:text-amber-400 transition-colors">
+            MUTHU KUMAR
+          </span>
+          <span class="text-[10px] tracking-widest text-slate-400 uppercase font-medium block">
+            Visual Storyteller
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Menu -->
+      <nav class="hidden lg:flex items-center gap-7 text-sm font-medium text-slate-300">
+        <a href="#hero" class="nav-link hover:text-amber-400 transition-colors" data-i18n="nav_home">Home</a>
+        <a href="#about" class="nav-link hover:text-amber-400 transition-colors" data-i18n="nav_about">About</a>
+        <a href="#photography" class="nav-link hover:text-amber-400 transition-colors" data-i18n="nav_photography">Photography</a>
+        <a href="#videography" class="nav-link hover:text-amber-400 transition-colors" data-i18n="nav_videography">Videography</a>
+        <a href="#editing" class="nav-link hover:text-amber-400 transition-colors" data-i18n="nav_editing">Video Editing</a>
+        <a href="#equipment" class="nav-link hover:text-amber-400 transition-colors" data-i18n="nav_equipment">Gear</a>
+        <a href="#services" class="nav-link hover:text-amber-400 transition-colors" data-i18n="nav_services">Services</a>
+        <a href="#reviews" class="nav-link hover:text-amber-400 transition-colors" data-i18n="nav_reviews">Reviews</a>
+        <a href="#contact" class="nav-link hover:text-amber-400 transition-colors" data-i18n="nav_contact">Contact</a>
+      </nav>
+
+      <!-- Action Group -->
+      <div class="flex items-center gap-3">
+        <!-- Language Switcher Pill -->
+        <button id="lang-toggle-btn" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-800/90 hover:bg-slate-700 border border-slate-700/80 text-xs font-semibold text-amber-400 transition-all cursor-pointer shadow" title="Toggle Language (English / தமிழ்)">
+          <i class="fa-solid fa-language text-sm"></i>
+          <span id="lang-current-label">தமிழ்</span>
+        </button>
+
+        <!-- CTA Button -->
+        <a href="#contact" class="hidden sm:inline-flex items-center gap-2 px-5 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-amber-400 text-dark font-bold text-xs uppercase tracking-wider shadow-lg shadow-amber-500/20 hover:shadow-amber-500/40 hover:-translate-y-0.5 transition-all">
+          <i class="fa-solid fa-paper-plane text-xs"></i>
+          <span data-i18n="btn_hire_me">Hire Me</span>
+        </a>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button id="mobile-menu-btn" class="lg:hidden w-10 h-10 rounded-xl bg-slate-800/80 border border-slate-700 flex items-center justify-center text-slate-300 hover:text-white" aria-label="Toggle menu">
+          <i class="fa-solid fa-bars text-lg"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobile-menu" class="lg:hidden hidden max-w-7xl mx-auto mt-2 p-5 bg-dark-surface/95 backdrop-blur-xl border border-slate-800 rounded-2xl shadow-2xl transition-all">
+      <div class="flex flex-col gap-3 text-sm font-medium">
+        <a href="#hero" class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-slate-800/60 hover:text-amber-400" data-i18n="nav_home">Home</a>
+        <a href="#about" class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-slate-800/60 hover:text-amber-400" data-i18n="nav_about">About</a>
+        <a href="#photography" class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-slate-800/60 hover:text-amber-400" data-i18n="nav_photography">Photography</a>
+        <a href="#videography" class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-slate-800/60 hover:text-amber-400" data-i18n="nav_videography">Videography</a>
+        <a href="#editing" class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-slate-800/60 hover:text-amber-400" data-i18n="nav_editing">Video Editing</a>
+        <a href="#equipment" class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-slate-800/60 hover:text-amber-400" data-i18n="nav_equipment">Camera & Equipment</a>
+        <a href="#services" class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-slate-800/60 hover:text-amber-400" data-i18n="nav_services">Services</a>
+        <a href="#reviews" class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-slate-800/60 hover:text-amber-400" data-i18n="nav_reviews">Reviews</a>
+        <a href="#contact" class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-slate-800/60 hover:text-amber-400" data-i18n="nav_contact">Contact</a>
+        <div class="pt-3 border-t border-slate-800 flex gap-2">
+          <a href="#contact" class="w-full text-center py-2.5 rounded-xl bg-amber-500 text-dark font-bold text-xs uppercase tracking-wider" data-i18n="btn_hire_me">Hire Me</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="relative z-10">
+
+    <!-- 1. HOME / HERO SECTION -->
+    <section id="hero" class="min-h-screen pt-32 pb-20 flex items-center justify-center px-4 sm:px-8">
+      <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        
+        <!-- Left Content (Hero Text & CTAs) -->
+        <div class="lg:col-span-7 flex flex-col items-start gap-6">
+          
+          <!-- Availability Badge -->
+          <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-amber-500/30 text-xs font-semibold text-amber-300 shadow-sm">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+            <span class="w-2 h-2 rounded-full bg-emerald-400 -ml-4"></span>
+            <span data-i18n="hero_status_badge">Available for Shoots & Worldwide Projects</span>
+          </div>
+
+          <!-- Main Heading & Title -->
+          <div class="space-y-3">
+            <p class="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-slate-400" data-i18n="hero_eyebrow">
+              HELLO, I'M
+            </p>
+            <h1 class="text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white uppercase font-heading leading-tight">
+              MUTHU <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 drop-shadow">KUMAR</span>
+            </h1>
+            <!-- Dynamic Typing Subtitle -->
+            <div class="flex items-center gap-2 text-lg sm:text-2xl font-semibold text-slate-300">
+              <span class="text-amber-400 font-mono text-sm sm:text-base">//</span>
+              <span id="role-typed-text" class="text-slate-100">Photographer</span>
+              <span class="cursor-blink text-amber-400">|</span>
+            </div>
+          </div>
+
+          <!-- Tagline & Description -->
+          <div class="space-y-3 max-w-xl">
+            <p class="text-xl sm:text-2xl font-serif italic text-amber-200/90 tracking-wide border-l-2 border-amber-500 pl-4 py-1" data-i18n="hero_tagline">
+              "Cinematic visuals. Creative storytelling."
+            </p>
+            <p class="text-sm sm:text-base text-slate-400 leading-relaxed" data-i18n="hero_description">
+              Capturing authentic human emotions, royal wedding celebrations, and crafting frame-by-frame cinematic stories. Powered by precision color science and immersive sound design.
+            </p>
+          </div>
+
+          <!-- CTAs -->
+          <div class="flex flex-wrap items-center gap-4 pt-2 w-full sm:w-auto">
+            <a href="#photography" class="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 text-dark font-black text-sm uppercase tracking-wider shadow-xl shadow-amber-500/25 hover:shadow-amber-500/40 hover:-translate-y-0.5 transition-all">
+              <i class="fa-solid fa-clapperboard"></i>
+              <span data-i18n="hero_btn_work">View My Work</span>
+            </a>
+            <a href="#contact" class="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl bg-slate-900/90 hover:bg-slate-800 text-slate-100 border border-slate-700/80 font-bold text-sm uppercase tracking-wider hover:border-amber-400/60 transition-all">
+              <i class="fa-regular fa-envelope"></i>
+              <span data-i18n="hero_btn_hire">Hire Me</span>
+            </a>
+            <a href="https://wa.me/919876543210?text=Hello%20Muthu%20Kumar,%20I%20came%20across%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20project!" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500 hover:text-white transition-all shadow-lg" title="Instant WhatsApp">
+              <i class="fa-brands fa-whatsapp text-xl"></i>
+            </a>
+          </div>
+
+          <!-- Social Proof / Quick Counter Bar -->
+          <div class="grid grid-cols-3 gap-6 pt-6 border-t border-slate-800/80 w-full max-w-lg">
+            <div>
+              <div class="text-2xl sm:text-3xl font-extrabold text-white font-heading">
+                <span class="counter" data-target="5">5</span>+
+              </div>
+              <div class="text-xs text-slate-400 uppercase tracking-wider mt-0.5" data-i18n="hero_stat_exp">Years Experience</div>
+            </div>
+            <div>
+              <div class="text-2xl sm:text-3xl font-extrabold text-amber-400 font-heading">
+                <span class="counter" data-target="180">180</span>+
+              </div>
+              <div class="text-xs text-slate-400 uppercase tracking-wider mt-0.5" data-i18n="hero_stat_proj">Cinematic Projects</div>
+            </div>
+            <div>
+              <div class="text-2xl sm:text-3xl font-extrabold text-white font-heading">
+                <span class="counter" data-target="100">100</span>%
+              </div>
+              <div class="text-xs text-slate-400 uppercase tracking-wider mt-0.5" data-i18n="hero_stat_satisfaction">Client Passion</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Visual (Hero Image Card) -->
+        <div class="lg:col-span-5 flex justify-center relative">
+          <!-- Backdrop glow & ring -->
+          <div class="relative w-full max-w-md">
+            
+            <!-- Floating Creative Accent Badge Top-Left -->
+            <div class="absolute -top-4 -left-4 sm:-left-6 z-20 px-4 py-2.5 rounded-2xl bg-dark-surface/90 backdrop-blur-md border border-slate-700/80 shadow-2xl flex items-center gap-3 animate-float">
+              <div class="w-9 h-9 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-lg">
+                <i class="fa-solid fa-camera"></i>
+              </div>
+              <div>
+                <p class="text-[11px] text-slate-400 uppercase font-semibold">Visual Craft</p>
+                <p class="text-xs font-bold text-white">Photographer & Editor</p>
+              </div>
+            </div>
+
+            <!-- Floating Creative Accent Badge Bottom-Right -->
+            <div class="absolute -bottom-4 -right-4 sm:-right-6 z-20 px-4 py-2.5 rounded-2xl bg-dark-surface/90 backdrop-blur-md border border-amber-500/30 shadow-2xl flex items-center gap-3 animate-float-delay">
+              <div class="w-9 h-9 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-lg">
+                <i class="fa-solid fa-film"></i>
+              </div>
+              <div>
+                <p class="text-[11px] text-slate-400 uppercase font-semibold">Cinema 4K</p>
+                <p class="text-xs font-bold text-amber-300">DaVinci & S-Log3</p>
+              </div>
+            </div>
+
+            <!-- Hero Image Wrapper with Cinematic Frame -->
+            <div class="relative overflow-hidden rounded-3xl border-2 border-slate-700/70 bg-gradient-to-b from-slate-800 to-dark shadow-2xl group">
+              <!-- Geometric Accent Background (Inspired by user's reference mockup) -->
+              <div class="absolute -top-16 -right-16 w-56 h-56 rounded-full bg-amber-500/20 blur-2xl"></div>
+              <div class="absolute -bottom-16 -left-16 w-56 h-56 rounded-full bg-cyan-500/20 blur-2xl"></div>
+              
+              <img src="assets/images/muthu-portrait.jpg" alt="Muthu Kumar - Photographer & Videographer" class="w-full h-auto object-cover relative z-10 transition-transform duration-700 group-hover:scale-105">
+
+              <!-- Glass Overlay Bar at bottom of photo -->
+              <div class="absolute bottom-0 inset-x-0 z-20 p-4 bg-gradient-to-t from-dark via-dark/80 to-transparent">
+                <div class="flex items-center justify-between text-xs text-slate-300">
+                  <span class="flex items-center gap-1.5 text-amber-400 font-semibold">
+                    <i class="fa-solid fa-sparkles"></i>
+                    Storyteller · Tamil Nadu
+                  </span>
+                  <span class="text-slate-400">Sony FX3 · 85mm</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Cinematic Corner Marks -->
+            <div class="corner-mark top-left"></div>
+            <div class="corner-mark top-right"></div>
+            <div class="corner-mark bottom-left"></div>
+            <div class="corner-mark bottom-right"></div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Scroll Indicator -->
+      <a href="#about" class="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-500 hover:text-amber-400 transition-colors">
+        <span class="text-[10px] tracking-widest uppercase font-mono" data-i18n="hero_scroll">Scroll Down</span>
+        <i class="fa-solid fa-chevron-down animate-bounce text-xs"></i>
+      </a>
+    </section>
+
+
+    <!-- 2. ABOUT ME SECTION -->
+    <section id="about" class="py-24 px-4 sm:px-8 border-t border-slate-800/80 bg-slate-950/40 relative">
+      <div class="max-w-7xl mx-auto">
+        
+        <!-- Section Header -->
+        <div class="flex flex-col items-center text-center mb-16 space-y-3">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold uppercase tracking-widest">
+            <i class="fa-solid fa-user-astronaut"></i>
+            <span data-i18n="about_tag">About Me</span>
+          </div>
+          <h2 class="text-3xl sm:text-5xl font-extrabold text-white font-heading tracking-tight" data-i18n="about_heading">
+            Passion, Vision & <span class="text-amber-400">Creative Craft</span>
+          </h2>
+          <p class="text-slate-400 text-sm sm:text-base max-w-2xl" data-i18n="about_subtitle">
+            An introduction to my filmmaking journey, visual philosophy, and how I bring raw emotions alive on screen.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <!-- Left Column: Muthu in Action Photo + Highlights -->
+          <div class="lg:col-span-5 relative">
+            <div class="relative rounded-3xl overflow-hidden border border-slate-800 bg-dark-surface shadow-2xl group">
+              <img src="assets/images/muthu-working.jpg" alt="Muthu Kumar behind the edit and camera" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700">
+              <div class="absolute inset-0 bg-gradient-to-t from-dark via-transparent to-transparent opacity-80"></div>
+              
+              <!-- Floating Experience Card -->
+              <div class="absolute bottom-6 left-6 right-6 p-4 rounded-2xl bg-dark-surface/90 backdrop-blur-md border border-slate-700/80 shadow-xl flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-amber-500 to-amber-300 text-dark flex items-center justify-center font-black text-xl">
+                    <i class="fa-solid fa-award"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-white text-sm" data-i18n="about_badge_exp">5+ Years Experience</h4>
+                    <p class="text-xs text-slate-400" data-i18n="about_badge_sub">Weddings, Cinema & Reels</p>
+                  </div>
+                </div>
+                <div class="text-right">
+                  <span class="text-xs font-mono text-emerald-400 font-bold">100% Pro</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Stylized Quote Pill in Tamil & English -->
+            <div class="mt-4 p-4 rounded-2xl bg-amber-500/5 border border-amber-500/20 text-center">
+              <p class="text-amber-300 font-serif italic text-sm" data-i18n="about_quote">
+                "ஒவ்வொரு பிரேமிலும் ஒரு கதை... உணர்வுகளின் தூய பதிவு."
+              </p>
+              <p class="text-[11px] text-slate-500 uppercase tracking-widest mt-1">
+                — Muthu Kumar
+              </p>
+            </div>
+          </div>
+
+          <!-- Right Column: Story, Pillars, Experience & Approach -->
+          <div class="lg:col-span-7 space-y-8">
+            
+            <!-- 1. உன்னைப் பற்றிய அறிமுகம் (Personal Introduction) -->
+            <div class="space-y-3">
+              <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-400">
+                <i class="fa-solid fa-fingerprint"></i>
+                <span data-i18n="about_intro_label">உன்னைப் பற்றிய அறிமுகம் / Personal Introduction</span>
+              </div>
+              <h3 class="text-2xl sm:text-3xl font-bold text-white leading-snug" data-i18n="about_intro_title">
+                Hello, I am Muthu Kumar — Visual Storyteller & Filmmaker
+              </h3>
+              <p class="text-slate-300 text-sm sm:text-base leading-relaxed" data-i18n="about_intro_p1">
+                Born with an innate fascination for how light sculpts human emotions, I transitioned from capturing fleeting street portraits to becoming a full-fledged cinematographer and professional video editor. Based in Tamil Nadu, I travel across India and destination weddings to tell heartfelt stories.
+              </p>
+            </div>
+
+            <!-- 2. Photography & Filmmaking Passion -->
+            <div class="space-y-2">
+              <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-400">
+                <i class="fa-solid fa-heart"></i>
+                <span data-i18n="about_passion_label">Photography & Filmmaking Passion</span>
+              </div>
+              <p class="text-slate-300 text-sm sm:text-base leading-relaxed" data-i18n="about_passion_text">
+                For me, a camera is not just hardware; it is an instrument to freeze unrepeatable moments. Whether it is the quiet tear of a father during a wedding Muhurtham, the sweat-glazed grace of a farmer at dawn, or the neon energy of an urban concert, my mission is to capture authentic raw humanity that echoes through generations.
+              </p>
+            </div>
+
+            <!-- 3. உன்னுடைய Experience & 4. Creative Approach Cards -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+              
+              <!-- Experience Box -->
+              <div class="p-5 rounded-2xl bg-dark-surface border border-slate-800 hover:border-amber-500/40 transition-colors space-y-2">
+                <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-lg">
+                  <i class="fa-solid fa-briefcase"></i>
+                </div>
+                <h4 class="font-bold text-white text-base" data-i18n="about_exp_title">உன்னுடைய Experience</h4>
+                <p class="text-xs text-slate-400 leading-relaxed" data-i18n="about_exp_desc">
+                  Over 5+ years crafting 180+ wedding cinematic films, high-converting commercial reels, independent short films, and high-end video edits for top creators and brands.
+                </p>
+              </div>
+
+              <!-- Creative Approach Box -->
+              <div class="p-5 rounded-2xl bg-dark-surface border border-slate-800 hover:border-amber-500/40 transition-colors space-y-2">
+                <div class="w-10 h-10 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-lg">
+                  <i class="fa-solid fa-wand-magic-sparkles"></i>
+                </div>
+                <h4 class="font-bold text-white text-base" data-i18n="about_approach_title">உன்னுடைய Creative Approach</h4>
+                <p class="text-xs text-slate-400 leading-relaxed" data-i18n="about_approach_desc">
+                  From moodboards & storyboards to natural-light composition, rhythm-based editing, bespoke DaVinci color grading, and evocative audio soundscapes.
+                </p>
+              </div>
+
+            </div>
+
+            <!-- Action buttons in About -->
+            <div class="flex flex-wrap items-center gap-4 pt-4">
+              <a href="#services" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-dark font-bold text-xs uppercase tracking-wider transition-all">
+                <i class="fa-solid fa-cubes"></i>
+                <span data-i18n="about_btn_services">Explore My Services</span>
+              </a>
+              <a href="#contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-bold text-xs uppercase tracking-wider transition-all">
+                <i class="fa-solid fa-handshake"></i>
+                <span data-i18n="about_btn_together">Let's Work Together</span>
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- 3. PHOTOGRAPHY PORTFOLIO -->
+    <section id="photography" class="py-24 px-4 sm:px-8 border-t border-slate-800/80 relative">
+      <div class="max-w-7xl mx-auto">
+        
+        <!-- Header -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+          <div class="space-y-3">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold uppercase tracking-widest">
+              <i class="fa-solid fa-camera-retro"></i>
+              <span data-i18n="photo_tag">Still Visuals</span>
+            </div>
+            <h2 class="text-3xl sm:text-5xl font-extrabold text-white font-heading tracking-tight" data-i18n="photo_heading">
+              Photography <span class="text-amber-400">Portfolio</span>
+            </h2>
+            <p class="text-slate-400 text-sm sm:text-base max-w-xl" data-i18n="photo_subtitle">
+              Every frame holds a story. Explore curated works spanning weddings, portraits, candid life, events, and fine-art nature series.
+            </p>
+          </div>
+
+          <!-- Category Filter Tabs -->
+          <div class="flex flex-wrap items-center gap-2 bg-dark-surface p-1.5 rounded-2xl border border-slate-800">
+            <button class="photo-filter-btn active px-4 py-2 rounded-xl text-xs font-bold tracking-wider uppercase transition-all" data-filter="all">All</button>
+            <button class="photo-filter-btn px-4 py-2 rounded-xl text-xs font-bold tracking-wider uppercase transition-all" data-filter="creative">Creative</button>
+            <button class="photo-filter-btn px-4 py-2 rounded-xl text-xs font-bold tracking-wider uppercase transition-all" data-filter="wedding">Wedding</button>
+            <button class="photo-filter-btn px-4 py-2 rounded-xl text-xs font-bold tracking-wider uppercase transition-all" data-filter="portrait">Portrait</button>
+            <button class="photo-filter-btn px-4 py-2 rounded-xl text-xs font-bold tracking-wider uppercase transition-all" data-filter="candid">Candid</button>
+            <button class="photo-filter-btn px-4 py-2 rounded-xl text-xs font-bold tracking-wider uppercase transition-all" data-filter="event">Event</button>
+          </div>
+        </div>
+
+        <!-- Gallery Grid -->
+        <div id="photo-gallery" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          
+          <!-- Item 1: Artboard 1 - Every Branch Holds a Story (Creative) -->
+          <div class="gallery-item group relative overflow-hidden rounded-2xl border border-slate-800 bg-dark-surface cursor-pointer shadow-lg" data-category="creative" data-src="assets/portfolio/artboard-1-branch.jpg" data-title="Every Branch Holds a Story" data-category-name="Creative Photography" data-desc="Weaver bird nests hanging naturally on a drumstick tree branch, captured in early morning haze. An homage to nature's architectural poetry." data-exif="Sony A7 IV · 85mm f/2.0 · 1/800s · ISO 100">
+            <div class="aspect-[9/14] overflow-hidden bg-slate-900">
+              <img src="assets/portfolio/artboard-1-branch.jpg" alt="Every Branch Holds a Story" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-108" loading="lazy">
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+              <span class="text-[11px] font-mono uppercase tracking-widest text-amber-400 font-bold">Creative Nature</span>
+              <h3 class="text-xl font-bold text-white mt-1">Every Branch Holds a Story</h3>
+              <p class="text-xs text-slate-300 mt-1 line-clamp-2">Artistic series on weaver bird dwellings & Tamil rural flora.</p>
+              <div class="flex items-center justify-between mt-3 pt-3 border-t border-slate-700/60 text-xs text-slate-400">
+                <span>Sony A7 IV</span>
+                <span class="text-amber-400 flex items-center gap-1 font-semibold"><i class="fa-solid fa-expand"></i> View Fullscreen</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 2: Artboard 2 - Rooted in Hard Work (Candid / Creative) -->
+          <div class="gallery-item group relative overflow-hidden rounded-2xl border border-slate-800 bg-dark-surface cursor-pointer shadow-lg" data-category="candid" data-src="assets/portfolio/artboard-2-farmer.jpg" data-title="Rooted in Hard Work" data-category-name="Candid Photography" data-desc="Documenting the untamed spirit and grit of a Tamil farmer working in sugarcane fields under the morning sun." data-exif="Sony FX3 · 35mm f/1.8 · 1/1200s · ISO 160">
+            <div class="aspect-[9/14] overflow-hidden bg-slate-900">
+              <img src="assets/portfolio/artboard-2-farmer.jpg" alt="Rooted in Hard Work - Tamil Nadu Farmer" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-108" loading="lazy">
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+              <span class="text-[11px] font-mono uppercase tracking-widest text-amber-400 font-bold">Candid & Culture</span>
+              <h3 class="text-xl font-bold text-white mt-1">Rooted in Hard Work</h3>
+              <p class="text-xs text-slate-300 mt-1 line-clamp-2">Documentary capture of agrarian perseverance in rural Tamil Nadu.</p>
+              <div class="flex items-center justify-between mt-3 pt-3 border-t border-slate-700/60 text-xs text-slate-400">
+                <span>Sony FX3</span>
+                <span class="text-amber-400 flex items-center gap-1 font-semibold"><i class="fa-solid fa-expand"></i> View Fullscreen</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 3: Artboard 3 - Even Concrete Can't Stop Nature (Creative) -->
+          <div class="gallery-item group relative overflow-hidden rounded-2xl border border-slate-800 bg-dark-surface cursor-pointer shadow-lg" data-category="creative" data-src="assets/portfolio/artboard-3-nature.jpg" data-title="Even Concrete Can't Stop Nature" data-category-name="Creative Photography" data-desc="Lush green creeping vines conquering a telephone utility pole against a muted cyan sky. A visual metaphor of resilience." data-exif="Sony A7 IV · 50mm f/2.2 · 1/640s · ISO 125">
+            <div class="aspect-[9/14] overflow-hidden bg-slate-900">
+              <img src="assets/portfolio/artboard-3-nature.jpg" alt="Even Concrete Can't Stop Nature" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-108" loading="lazy">
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+              <span class="text-[11px] font-mono uppercase tracking-widest text-amber-400 font-bold">Creative Fine Art</span>
+              <h3 class="text-xl font-bold text-white mt-1">Even Concrete Can't Stop Nature</h3>
+              <p class="text-xs text-slate-300 mt-1 line-clamp-2">Vines wrapping utility wires in an embrace of green vitality.</p>
+              <div class="flex items-center justify-between mt-3 pt-3 border-t border-slate-700/60 text-xs text-slate-400">
+                <span>Sony A7 IV</span>
+                <span class="text-amber-400 flex items-center gap-1 font-semibold"><i class="fa-solid fa-expand"></i> View Fullscreen</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 4: Artboard 4 - When the Fields Meet the Sun (Creative) -->
+          <div class="gallery-item group relative overflow-hidden rounded-2xl border border-slate-800 bg-dark-surface cursor-pointer shadow-lg" data-category="creative" data-src="assets/portfolio/artboard-4-fields.jpg" data-title="When the Fields Meet the Sun" data-category-name="Creative Photography" data-desc="Delicate stalks of grass silhouetted against a blazing golden-hour sunset. Pure cinematic warmth and tranquility." data-exif="Sony A7 IV · 70-200mm f/2.8 GM · 1/1600s · ISO 100">
+            <div class="aspect-[9/14] overflow-hidden bg-slate-900">
+              <img src="assets/portfolio/artboard-4-fields.jpg" alt="When the Fields Meet the Sun" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-108" loading="lazy">
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+              <span class="text-[11px] font-mono uppercase tracking-widest text-amber-400 font-bold">Golden Hour Cinema</span>
+              <h3 class="text-xl font-bold text-white mt-1">When the Fields Meet the Sun</h3>
+              <p class="text-xs text-slate-300 mt-1 line-clamp-2">Sunset flare cascading across wild flora.</p>
+              <div class="flex items-center justify-between mt-3 pt-3 border-t border-slate-700/60 text-xs text-slate-400">
+                <span>Sony 70-200mm GM</span>
+                <span class="text-amber-400 flex items-center gap-1 font-semibold"><i class="fa-solid fa-expand"></i> View Fullscreen</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 5: Artboard 5 - Home, Wherever The Heart Rests (Creative) -->
+          <div class="gallery-item group relative overflow-hidden rounded-2xl border border-slate-800 bg-dark-surface cursor-pointer shadow-lg" data-category="creative" data-src="assets/portfolio/artboard-5-birds.jpg" data-title="Home, Wherever The Heart Rests" data-category-name="Creative Photography" data-desc="A pair of sparrows perched lovingly next to hanging nests, framed by expansive green canopies." data-exif="Sony A7 IV · 135mm f/2.5 · 1/1000s · ISO 200">
+            <div class="aspect-[9/14] overflow-hidden bg-slate-900">
+              <img src="assets/portfolio/artboard-5-birds.jpg" alt="Home, Wherever The Heart Rests" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-108" loading="lazy">
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+              <span class="text-[11px] font-mono uppercase tracking-widest text-amber-400 font-bold">Wildlife & Nature</span>
+              <h3 class="text-xl font-bold text-white mt-1">Home, Wherever The Heart Rests</h3>
+              <p class="text-xs text-slate-300 mt-1 line-clamp-2">Intimate glimpse into avian sanctuary and companionship.</p>
+              <div class="flex items-center justify-between mt-3 pt-3 border-t border-slate-700/60 text-xs text-slate-400">
+                <span>Sony A7 IV</span>
+                <span class="text-amber-400 flex items-center gap-1 font-semibold"><i class="fa-solid fa-expand"></i> View Fullscreen</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 6: Wedding 1 - The Sacred Muhurtham (Wedding) -->
+          <div class="gallery-item group relative overflow-hidden rounded-2xl border border-slate-800 bg-dark-surface cursor-pointer shadow-lg" data-category="wedding" data-src="assets/portfolio/wedding/sacred-muhurtham.jpg" data-title="The Sacred Muhurtham" data-category-name="Wedding Photography" data-desc="The timeless sanctity of South Indian wedding rituals, bathed in ceremonial holy fire and gold flower bokeh." data-exif="Sony FX3 · 50mm f/1.4 GM · 1/320s · ISO 400">
+            <div class="aspect-[9/14] overflow-hidden bg-slate-900">
+              <img src="assets/portfolio/wedding/sacred-muhurtham.jpg" alt="The Sacred Muhurtham Wedding" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-108" loading="lazy">
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+              <span class="text-[11px] font-mono uppercase tracking-widest text-amber-400 font-bold">Wedding Cinema</span>
+              <h3 class="text-xl font-bold text-white mt-1">The Sacred Muhurtham</h3>
+              <p class="text-xs text-slate-300 mt-1 line-clamp-2">Golden warmth, floral marigold showers & sacred promises.</p>
+              <div class="flex items-center justify-between mt-3 pt-3 border-t border-slate-700/60 text-xs text-slate-400">
+                <span>Sony 50mm GM</span>
+                <span class="text-amber-400 flex items-center gap-1 font-semibold"><i class="fa-solid fa-expand"></i> View Fullscreen</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 7: Wedding 2 - Bridal Elegance & Temple Hues (Wedding) -->
+          <div class="gallery-item group relative overflow-hidden rounded-2xl border border-slate-800 bg-dark-surface cursor-pointer shadow-lg" data-category="wedding" data-src="assets/portfolio/wedding/bridal-elegance.jpg" data-title="Bridal Elegance & Temple Silk" data-category-name="Wedding Photography" data-desc="Intricate Kanchipuram silk saree, antique temple jewelry, and an exquisite portrait of the bride at twilight." data-exif="Sony A7 IV · 85mm f/1.4 GM · 1/250s · ISO 250">
+            <div class="aspect-[9/14] overflow-hidden bg-slate-900">
+              <img src="assets/portfolio/wedding/bridal-elegance.jpg" alt="Bridal Elegance and Temple Hues" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-108" loading="lazy">
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+              <span class="text-[11px] font-mono uppercase tracking-widest text-amber-400 font-bold">Wedding Portrait</span>
+              <h3 class="text-xl font-bold text-white mt-1">Bridal Elegance & Silk</h3>
+              <p class="text-xs text-slate-300 mt-1 line-clamp-2">Regal crimson tones and fine jewelry highlights.</p>
+              <div class="flex items-center justify-between mt-3 pt-3 border-t border-slate-700/60 text-xs text-slate-400">
+                <span>Sony 85mm GM</span>
+                <span class="text-amber-400 flex items-center gap-1 font-semibold"><i class="fa-solid fa-expand"></i> View Fullscreen</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 8: Portrait - Muthu Kumar Visionary Series (Portrait) -->
+          <div class="gallery-item group relative overflow-hidden rounded-2xl border border-slate-800 bg-dark-surface cursor-pointer shadow-lg" data-category="portrait" data-src="assets/images/muthu-portrait.jpg" data-title="The Visionary - Muthu Kumar" data-category-name="Portrait Photography" data-desc="Editorial cinematic portrait featuring contrasting duotone color grading, bold expressions, and painterly finish." data-exif="Sony FX3 · 85mm f/1.4 · 1/500s · ISO 100">
+            <div class="aspect-[9/14] overflow-hidden bg-slate-900">
+              <img src="assets/images/muthu-portrait.jpg" alt="Muthu Kumar Portrait" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-108" loading="lazy">
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+              <span class="text-[11px] font-mono uppercase tracking-widest text-amber-400 font-bold">Editorial Portrait</span>
+              <h3 class="text-xl font-bold text-white mt-1">The Visionary - Muthu Kumar</h3>
+              <p class="text-xs text-slate-300 mt-1 line-clamp-2">High contrast editorial lighting & cinematic color grade.</p>
+              <div class="flex items-center justify-between mt-3 pt-3 border-t border-slate-700/60 text-xs text-slate-400">
+                <span>Sony FX3 Cinema</span>
+                <span class="text-amber-400 flex items-center gap-1 font-semibold"><i class="fa-solid fa-expand"></i> View Fullscreen</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 9: Event - Audio Launch Concert Stage (Event) -->
+          <div class="gallery-item group relative overflow-hidden rounded-2xl border border-slate-800 bg-dark-surface cursor-pointer shadow-lg" data-category="event" data-src="assets/portfolio/event/concert-stage.jpg" data-title="Grand Audio Launch Stage" data-category-name="Event Photography" data-desc="High-octane concert lighting with electric cyan and magenta beams piercing through stage haze at an audio launch." data-exif="Sony A7S III · 24-70mm f/2.8 GM · 1/400s · ISO 1600">
+            <div class="aspect-[9/14] overflow-hidden bg-slate-900">
+              <img src="assets/portfolio/event/concert-stage.jpg" alt="Grand Audio Launch Stage Event" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-108" loading="lazy">
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+              <span class="text-[11px] font-mono uppercase tracking-widest text-cyan-400 font-bold">Event & Stage</span>
+              <h3 class="text-xl font-bold text-white mt-1">Audio Launch Concert</h3>
+              <p class="text-xs text-slate-300 mt-1 line-clamp-2">Electric stadium vibes, moving lasers & crowd euphoria.</p>
+              <div class="flex items-center justify-between mt-3 pt-3 border-t border-slate-700/60 text-xs text-slate-400">
+                <span>Sony 24-70mm GM</span>
+                <span class="text-amber-400 flex items-center gap-1 font-semibold"><i class="fa-solid fa-expand"></i> View Fullscreen</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- 4. VIDEOGRAPHY PORTFOLIO -->
+    <section id="videography" class="py-24 px-4 sm:px-8 border-t border-slate-800/80 bg-slate-950/40 relative">
+      <div class="max-w-7xl mx-auto">
+        
+        <!-- Header -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+          <div class="space-y-3">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-bold uppercase tracking-widest">
+              <i class="fa-solid fa-film"></i>
+              <span data-i18n="video_tag">Cinematic Motion</span>
+            </div>
+            <h2 class="text-3xl sm:text-5xl font-extrabold text-white font-heading tracking-tight" data-i18n="video_heading">
+              Videography <span class="text-cyan-400">Portfolio</span>
+            </h2>
+            <p class="text-slate-400 text-sm sm:text-base max-w-xl" data-i18n="video_subtitle">
+              From grand 4K wedding films to evocative short stories and dynamic social reels. Motion pictures crafted to move hearts.
+            </p>
+          </div>
+
+          <!-- Video Filter Tabs -->
+          <div class="flex flex-wrap items-center gap-2 bg-dark-surface p-1.5 rounded-2xl border border-slate-800">
+            <button class="video-filter-btn active px-4 py-2 rounded-xl text-xs font-bold tracking-wider uppercase transition-all" data-vfilter="all">All Films</button>
+            <button class="video-filter-btn px-4 py-2 rounded-xl text-xs font-bold tracking-wider uppercase transition-all" data-vfilter="wedding-films">Wedding</button>
+            <button class="video-filter-btn px-4 py-2 rounded-xl text-xs font-bold tracking-wider uppercase transition-all" data-vfilter="pre-wedding">Pre-Wedding</button>
+            <button class="video-filter-btn px-4 py-2 rounded-xl text-xs font-bold tracking-wider uppercase transition-all" data-vfilter="event-films">Event Films</button>
+            <button class="video-filter-btn px-4 py-2 rounded-xl text-xs font-bold tracking-wider uppercase transition-all" data-vfilter="short-films">Short Films</button>
+            <button class="video-filter-btn px-4 py-2 rounded-xl text-xs font-bold tracking-wider uppercase transition-all" data-vfilter="reels">Cinematic Reels</button>
+          </div>
+        </div>
+
+        <!-- Video Cards Grid -->
+        <div id="video-gallery" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          
+          <!-- Video 1: Wedding Film -->
+          <div class="video-card group rounded-2xl overflow-hidden border border-slate-800 bg-dark-surface shadow-xl flex flex-col" data-vcategory="wedding-films" data-video-title="Anbe Sivam - The Grand Royal Wedding Film" data-video-desc="A 4K cinematic wedding highlight capturing timeless South Indian traditions, emotional parent blessings, and breathtaking drone perspectives in Mahabalipuram." data-video-gear="Sony FX3 Cinema Line · 24-70mm f/2.8 GM II · DJI RS 3 Pro" data-video-duration="04:45" data-video-category="Wedding Film">
+            <!-- Thumbnail & Play Overlay -->
+            <div class="relative aspect-video overflow-hidden bg-slate-900 cursor-pointer video-play-trigger">
+              <img src="assets/portfolio/video/wedding-film-thumb.jpg" alt="Wedding Film Thumbnail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-dark/40 group-hover:bg-dark/20 transition-colors flex items-center justify-center">
+                <div class="w-14 h-14 rounded-full bg-amber-500 text-dark flex items-center justify-center text-xl shadow-lg shadow-amber-500/40 group-hover:scale-110 transition-transform">
+                  <i class="fa-solid fa-play ml-1"></i>
+                </div>
+              </div>
+              <span class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-dark/80 backdrop-blur-md text-[10px] font-bold text-amber-400 uppercase tracking-wider border border-amber-500/30">
+                4K Cinema
+              </span>
+              <span class="absolute bottom-3 right-3 px-2 py-0.5 rounded bg-dark/90 text-[11px] font-mono text-slate-300">
+                04:45
+              </span>
+            </div>
+            <!-- Card Body -->
+            <div class="p-5 flex-1 flex flex-col justify-between space-y-3">
+              <div>
+                <span class="text-xs font-bold text-amber-400 uppercase tracking-widest">Wedding Films</span>
+                <h3 class="text-lg font-bold text-white mt-1 group-hover:text-amber-400 transition-colors">Anbe Sivam - Grand Royal Wedding</h3>
+                <p class="text-xs text-slate-400 mt-1 line-clamp-2">Tradition meets cinematic storytelling with soulful nadhaswaram soundscape.</p>
+              </div>
+              <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
+                <span>Sony FX3 · S-Log3</span>
+                <button class="video-play-trigger text-amber-400 font-bold hover:underline">Watch Film &rarr;</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Video 2: Pre-Wedding Film -->
+          <div class="video-card group rounded-2xl overflow-hidden border border-slate-800 bg-dark-surface shadow-xl flex flex-col" data-vcategory="pre-wedding" data-video-title="Waves & Vows - Pre-Wedding Cinema" data-video-desc="Captured along the serene sunrise coastlines of Dhanushkodi and Pondicherry. Soft romantic lighting, natural candid laughter, and poem narration." data-video-gear="Sony A7 IV · 35mm & 85mm GM · PolarPro VND" data-video-duration="02:30" data-video-category="Pre-Wedding Film">
+            <div class="relative aspect-video overflow-hidden bg-slate-900 cursor-pointer video-play-trigger">
+              <img src="assets/portfolio/video/pre-wedding-thumb.jpg" alt="Pre-Wedding Film Thumbnail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-dark/40 group-hover:bg-dark/20 transition-colors flex items-center justify-center">
+                <div class="w-14 h-14 rounded-full bg-cyan-500 text-dark flex items-center justify-center text-xl shadow-lg shadow-cyan-500/40 group-hover:scale-110 transition-transform">
+                  <i class="fa-solid fa-play ml-1"></i>
+                </div>
+              </div>
+              <span class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-dark/80 backdrop-blur-md text-[10px] font-bold text-cyan-400 uppercase tracking-wider border border-cyan-500/30">
+                Cinematic Love
+              </span>
+              <span class="absolute bottom-3 right-3 px-2 py-0.5 rounded bg-dark/90 text-[11px] font-mono text-slate-300">
+                02:30
+              </span>
+            </div>
+            <div class="p-5 flex-1 flex flex-col justify-between space-y-3">
+              <div>
+                <span class="text-xs font-bold text-cyan-400 uppercase tracking-widest">Pre-Wedding Films</span>
+                <h3 class="text-lg font-bold text-white mt-1 group-hover:text-cyan-400 transition-colors">Waves & Vows - Coastal Romance</h3>
+                <p class="text-xs text-slate-400 mt-1 line-clamp-2">Golden sunrise horizons, wind-swept shores, and intimate chemistry.</p>
+              </div>
+              <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
+                <span>Sony A7 IV · 85mm GM</span>
+                <button class="video-play-trigger text-cyan-400 font-bold hover:underline">Watch Film &rarr;</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Video 3: Short Film -->
+          <div class="video-card group rounded-2xl overflow-hidden border border-slate-800 bg-dark-surface shadow-xl flex flex-col" data-vcategory="short-films" data-video-title="Echoes of the Soil - Tamil Documentary Short" data-video-desc="Award-winning indie documentary short exploring agricultural heritage and the lives of generational farmers in Thanjavur." data-video-gear="Sony FX3 Cinema · 70-200mm GM · DaVinci Resolve Studio" data-video-duration="12:15" data-video-category="Short Film">
+            <div class="relative aspect-video overflow-hidden bg-slate-900 cursor-pointer video-play-trigger">
+              <img src="assets/portfolio/video/cauvery-documentary-thumb.jpg" alt="Short Film Thumbnail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-dark/40 group-hover:bg-dark/20 transition-colors flex items-center justify-center">
+                <div class="w-14 h-14 rounded-full bg-emerald-500 text-dark flex items-center justify-center text-xl shadow-lg shadow-emerald-500/40 group-hover:scale-110 transition-transform">
+                  <i class="fa-solid fa-play ml-1"></i>
+                </div>
+              </div>
+              <span class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-dark/80 backdrop-blur-md text-[10px] font-bold text-emerald-400 uppercase tracking-wider border border-emerald-500/30">
+                Film Festival Entry
+              </span>
+              <span class="absolute bottom-3 right-3 px-2 py-0.5 rounded bg-dark/90 text-[11px] font-mono text-slate-300">
+                12:15
+              </span>
+            </div>
+            <div class="p-5 flex-1 flex flex-col justify-between space-y-3">
+              <div>
+                <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest">Short Films</span>
+                <h3 class="text-lg font-bold text-white mt-1 group-hover:text-emerald-400 transition-colors">Echoes of the Soil - Documentary</h3>
+                <p class="text-xs text-slate-400 mt-1 line-clamp-2">Authentic village narratives, raw rural textures, and emotive pacing.</p>
+              </div>
+              <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
+                <span>DaVinci Resolve Grade</span>
+                <button class="video-play-trigger text-emerald-400 font-bold hover:underline">Watch Film &rarr;</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Video 4: Event Film -->
+          <div class="video-card group rounded-2xl overflow-hidden border border-slate-800 bg-dark-surface shadow-xl flex flex-col" data-vcategory="event-films" data-video-title="Neon Nights - Electronic Music Festival Aftermovie" data-video-desc="High-speed dynamic edits, audio transitions, custom sound FX, and color pop designed for maximum hype and adrenaline." data-video-gear="Multi-Cam Sony A7S III & FX3 · DJI Ronin" data-video-duration="03:10" data-video-category="Event Film">
+            <div class="relative aspect-video overflow-hidden bg-slate-900 cursor-pointer video-play-trigger">
+              <img src="assets/portfolio/video/urban-fashion-thumb.jpg" alt="Event Aftermovie Thumbnail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-dark/40 group-hover:bg-dark/20 transition-colors flex items-center justify-center">
+                <div class="w-14 h-14 rounded-full bg-rose-500 text-white flex items-center justify-center text-xl shadow-lg shadow-rose-500/40 group-hover:scale-110 transition-transform">
+                  <i class="fa-solid fa-play ml-1"></i>
+                </div>
+              </div>
+              <span class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-dark/80 backdrop-blur-md text-[10px] font-bold text-rose-400 uppercase tracking-wider border border-rose-500/30">
+                High Energy
+              </span>
+              <span class="absolute bottom-3 right-3 px-2 py-0.5 rounded bg-dark/90 text-[11px] font-mono text-slate-300">
+                03:10
+              </span>
+            </div>
+            <div class="p-5 flex-1 flex flex-col justify-between space-y-3">
+              <div>
+                <span class="text-xs font-bold text-rose-400 uppercase tracking-widest">Event Films</span>
+                <h3 class="text-lg font-bold text-white mt-1 group-hover:text-rose-400 transition-colors">Neon Nights - Live Festival Aftermovie</h3>
+                <p class="text-xs text-slate-400 mt-1 line-clamp-2">Speed ramping, rhythmic cuts, and bass-synchronized transitions.</p>
+              </div>
+              <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
+                <span>Premiere & After Effects</span>
+                <button class="video-play-trigger text-rose-400 font-bold hover:underline">Watch Film &rarr;</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Video 5: Cinematic Reels -->
+          <div class="video-card group rounded-2xl overflow-hidden border border-slate-800 bg-dark-surface shadow-xl flex flex-col" data-vcategory="reels" data-video-title="Street Soul Chennai - Viral 9:16 Cinematic Reel" data-video-desc="Vertically framed high-impact visual series featuring Chennai's iconic Chai stalls, Marina Beach twilight, and bustling train journeys." data-video-gear="Sony FX3 · 24mm f/1.4 GM · Gyroflow Stabilization" data-video-duration="00:58" data-video-category="Cinematic Reels">
+            <div class="relative aspect-video overflow-hidden bg-slate-900 cursor-pointer video-play-trigger">
+              <img src="assets/portfolio/video/cinematic-reel-thumb.jpg" alt="Cinematic Reel Thumbnail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-dark/40 group-hover:bg-dark/20 transition-colors flex items-center justify-center">
+                <div class="w-14 h-14 rounded-full bg-amber-400 text-dark flex items-center justify-center text-xl shadow-lg shadow-amber-400/40 group-hover:scale-110 transition-transform">
+                  <i class="fa-solid fa-play ml-1"></i>
+                </div>
+              </div>
+              <span class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-dark/80 backdrop-blur-md text-[10px] font-bold text-amber-300 uppercase tracking-wider border border-amber-400/30">
+                Instagram Viral
+              </span>
+              <span class="absolute bottom-3 right-3 px-2 py-0.5 rounded bg-dark/90 text-[11px] font-mono text-slate-300">
+                00:58
+              </span>
+            </div>
+            <div class="p-5 flex-1 flex flex-col justify-between space-y-3">
+              <div>
+                <span class="text-xs font-bold text-amber-400 uppercase tracking-widest">Cinematic Reels</span>
+                <h3 class="text-lg font-bold text-white mt-1 group-hover:text-amber-400 transition-colors">Street Soul Chennai - 9:16 Viral Reel</h3>
+                <p class="text-xs text-slate-400 mt-1 line-clamp-2">Optimized for vertical screens with snappy retention hooks.</p>
+              </div>
+              <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
+                <span>9:16 Mobile Cinema</span>
+                <button class="video-play-trigger text-amber-400 font-bold hover:underline">Watch Reel &rarr;</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- 5. VIDEO EDITING & COLOR GRADING SHOWCASE -->
+    <section id="editing" class="py-24 px-4 sm:px-8 border-t border-slate-800/80 relative">
+      <div class="max-w-7xl mx-auto space-y-16">
+        
+        <!-- Header -->
+        <div class="flex flex-col items-center text-center space-y-3">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold uppercase tracking-widest">
+            <i class="fa-solid fa-sliders"></i>
+            <span data-i18n="edit_tag">Post-Production Craft</span>
+          </div>
+          <h2 class="text-3xl sm:text-5xl font-extrabold text-white font-heading tracking-tight" data-i18n="edit_heading">
+            Video Editing & <span class="text-amber-400">Color Grading</span>
+          </h2>
+          <p class="text-slate-400 text-sm sm:text-base max-w-2xl" data-i18n="edit_subtitle">
+            Experience the transformation from flat raw camera profiles (S-Log3) into breathtaking Hollywood-grade cinematic finishes.
+          </p>
+        </div>
+
+        <!-- Interactive Color Grading Comparison Slider (Before / After) -->
+        <div class="bg-dark-surface border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl relative">
+          
+          <!-- Slider Control Top Bar -->
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-slate-800">
+            <div>
+              <span class="text-xs font-mono uppercase text-amber-400 font-bold">Interactive Colorist Showcase</span>
+              <h3 class="text-xl sm:text-2xl font-bold text-white">Compare Raw S-Log3 vs Final Cinema Grade</h3>
+            </div>
+            
+            <!-- Comparison Scene Toggle -->
+            <div class="flex items-center gap-2 bg-slate-900 p-1.5 rounded-xl border border-slate-800 self-start sm:self-auto">
+              <span class="text-xs text-slate-400 pl-2">Scene:</span>
+              <button id="scene-sunset-btn" class="scene-toggle-btn active px-3 py-1 rounded-lg text-xs font-bold bg-amber-500 text-dark">
+                Golden Sunset
+              </button>
+              <button id="scene-farmer-btn" class="scene-toggle-btn px-3 py-1 rounded-lg text-xs font-bold text-slate-300 hover:text-white">
+                Rural Earth
+              </button>
+            </div>
+          </div>
+
+          <!-- Before / After Draggable Container -->
+          <div id="grading-slider-container" class="relative w-full aspect-video sm:aspect-[21/9] rounded-2xl overflow-hidden select-none cursor-ew-resize border border-slate-700/80 shadow-2xl">
+            
+            <!-- Graded (AFTER) Image (Bottom Full Layer) -->
+            <img id="grading-after-img" src="assets/portfolio/grading-after.jpg" alt="Final Cinematic Grade" class="absolute inset-0 w-full h-full object-cover">
+            
+            <!-- Graded Badge (Right) -->
+            <div class="absolute top-4 right-4 z-10 px-3.5 py-1.5 rounded-xl bg-dark/85 backdrop-blur-md border border-amber-500/40 text-amber-300 text-xs font-bold uppercase tracking-wider flex items-center gap-2 shadow-lg">
+              <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+              <span>Final Grade (Rec.709 Film LUT)</span>
+            </div>
+
+            <!-- Flat Raw (BEFORE) Image (Clipped Layer) -->
+            <div id="grading-before-wrapper" class="absolute inset-0 w-1/2 h-full overflow-hidden border-r-2 border-white/90 shadow-[0_0_20px_rgba(245,158,11,0.5)]">
+              <img id="grading-before-img" src="assets/portfolio/grading-before.jpg" alt="Raw Flat S-Log3 Profile" class="absolute inset-0 w-full h-full object-cover max-w-none">
+              
+              <!-- Before Badge (Left) -->
+              <div class="absolute top-4 left-4 z-10 px-3.5 py-1.5 rounded-xl bg-dark/85 backdrop-blur-md border border-slate-700 text-slate-300 text-xs font-bold uppercase tracking-wider flex items-center gap-2 shadow-lg">
+                <span class="w-2 h-2 rounded-full bg-slate-400"></span>
+                <span>Raw S-Log3 Flat</span>
+              </div>
+            </div>
+
+            <!-- Draggable Center Handle -->
+            <div id="grading-slider-handle" class="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-8 flex items-center justify-center pointer-events-none z-20">
+              <div class="w-9 h-9 rounded-full bg-amber-400 text-dark flex items-center justify-center text-xs shadow-xl shadow-amber-500/60 font-black border-2 border-white">
+                <i class="fa-solid fa-arrows-left-right"></i>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="flex items-center justify-between mt-4 text-xs text-slate-400">
+            <span class="flex items-center gap-1.5">
+              <i class="fa-solid fa-hand-pointer text-amber-400"></i>
+              Drag slider left or right to inspect dynamic range and color separation
+            </span>
+            <span class="font-mono text-amber-400 font-semibold">DaVinci Resolve Studio 19</span>
+          </div>
+
+        </div>
+
+        <!-- 5 Pillars of Video Editing -->
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
+          
+          <!-- Pillar 1 -->
+          <div class="p-6 rounded-2xl bg-dark-surface border border-slate-800 hover:border-amber-500/40 transition-all space-y-3">
+            <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-xl">
+              <i class="fa-solid fa-scissors"></i>
+            </div>
+            <h4 class="font-bold text-white text-base" data-i18n="edit_p1_title">Cinematic Editing</h4>
+            <p class="text-xs text-slate-400 leading-relaxed" data-i18n="edit_p1_desc">
+              Pacing, rhythm, J-cuts & L-cuts, emotional arc structuring, and narrative tension matching the musical tempo.
+            </p>
+          </div>
+
+          <!-- Pillar 2 -->
+          <div class="p-6 rounded-2xl bg-dark-surface border border-slate-800 hover:border-amber-500/40 transition-all space-y-3">
+            <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-xl">
+              <i class="fa-solid fa-palette"></i>
+            </div>
+            <h4 class="font-bold text-white text-base" data-i18n="edit_p2_title">Color Grading</h4>
+            <p class="text-xs text-slate-400 leading-relaxed" data-i18n="edit_p2_desc">
+              Node-based primary & secondary corrections in DaVinci, custom LUT development, skin tone isolation, and film grain emulation.
+            </p>
+          </div>
+
+          <!-- Pillar 3 -->
+          <div class="p-6 rounded-2xl bg-dark-surface border border-slate-800 hover:border-amber-500/40 transition-all space-y-3">
+            <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center text-xl">
+              <i class="fa-solid fa-shapes"></i>
+            </div>
+            <h4 class="font-bold text-white text-base" data-i18n="edit_p3_title">Motion Graphics</h4>
+            <p class="text-xs text-slate-400 leading-relaxed" data-i18n="edit_p3_desc">
+              Clean kinetic typography, lower thirds, callout markers, dynamic UI overlays, and logo reveal stings in After Effects.
+            </p>
+          </div>
+
+          <!-- Pillar 4 -->
+          <div class="p-6 rounded-2xl bg-dark-surface border border-slate-800 hover:border-amber-500/40 transition-all space-y-3">
+            <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl">
+              <i class="fa-solid fa-font"></i>
+            </div>
+            <h4 class="font-bold text-white text-base" data-i18n="edit_p4_title">Title Animation</h4>
+            <p class="text-xs text-slate-400 leading-relaxed" data-i18n="edit_p4_desc">
+              Bespoke Tamil & English movie-style title cards, elegant wedding intro slates, and typography tailored to the mood.
+            </p>
+          </div>
+
+          <!-- Pillar 5 -->
+          <div class="p-6 rounded-2xl bg-dark-surface border border-slate-800 hover:border-amber-500/40 transition-all space-y-3">
+            <div class="w-12 h-12 rounded-xl bg-rose-500/10 text-rose-400 flex items-center justify-center text-xl">
+              <i class="fa-solid fa-bolt"></i>
+            </div>
+            <h4 class="font-bold text-white text-base" data-i18n="edit_p5_title">VFX & Transitions</h4>
+            <p class="text-xs text-slate-400 leading-relaxed" data-i18n="edit_p5_desc">
+              Seamless match cuts, speed ramps, whip pans, object removal, sky replacement, and immersive sound design sync.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- 7. CAMERA & EQUIPMENT SECTION -->
+    <section id="equipment" class="py-24 px-4 sm:px-8 border-t border-slate-800/80 bg-slate-950/40 relative">
+      <div class="max-w-7xl mx-auto space-y-16">
+        
+        <!-- Header -->
+        <div class="flex flex-col items-center text-center space-y-3">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold uppercase tracking-widest">
+            <i class="fa-solid fa-toolbox"></i>
+            <span data-i18n="gear_tag">Professional Arsenal</span>
+          </div>
+          <h2 class="text-3xl sm:text-5xl font-extrabold text-white font-heading tracking-tight" data-i18n="gear_heading">
+            Camera & <span class="text-amber-400">Equipment</span>
+          </h2>
+          <p class="text-slate-400 text-sm sm:text-base max-w-2xl" data-i18n="gear_subtitle">
+            Reliable industry-grade cinema cameras, prime G-Master glass, precision lighting setups, and an elite editing suite.
+          </p>
+        </div>
+
+        <!-- Gear Category Switcher -->
+        <div class="flex justify-center">
+          <div class="flex flex-wrap items-center justify-center gap-2 bg-dark-surface p-2 rounded-2xl border border-slate-800">
+            <button class="gear-tab-btn active px-5 py-2.5 rounded-xl text-xs font-bold tracking-wider uppercase transition-all" data-geartab="all">All Arsenal</button>
+            <button class="gear-tab-btn px-5 py-2.5 rounded-xl text-xs font-bold tracking-wider uppercase transition-all" data-geartab="camera">Cameras</button>
+            <button class="gear-tab-btn px-5 py-2.5 rounded-xl text-xs font-bold tracking-wider uppercase transition-all" data-geartab="lens">Lenses</button>
+            <button class="gear-tab-btn px-5 py-2.5 rounded-xl text-xs font-bold tracking-wider uppercase transition-all" data-geartab="lighting">Lighting & Grip</button>
+            <button class="gear-tab-btn px-5 py-2.5 rounded-xl text-xs font-bold tracking-wider uppercase transition-all" data-geartab="software">Editing Software</button>
+          </div>
+        </div>
+
+        <!-- Gear Grid -->
+        <div id="gear-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          
+          <!-- Gear 1: Sony FX3 (Camera) -->
+          <div class="gear-card p-6 rounded-2xl bg-dark-surface border border-slate-800 hover:border-amber-500/40 transition-all flex flex-col justify-between" data-gear-category="camera">
+            <div class="space-y-4">
+              <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-xl">
+                <i class="fa-solid fa-video"></i>
+              </div>
+              <div>
+                <span class="text-[10px] font-mono text-amber-400 font-bold uppercase tracking-widest">Cinema Line</span>
+                <h4 class="text-lg font-bold text-white mt-1">Sony FX3</h4>
+                <p class="text-xs text-slate-400 mt-2">Full-frame 4K 120fps recording, 15+ stops dynamic range, S-Cinetone & S-Log3 color profiles with active cooling.</p>
+              </div>
+            </div>
+            <div class="pt-4 border-t border-slate-800/80 text-[11px] font-mono text-slate-500 flex justify-between">
+              <span>Main Body</span>
+              <span class="text-amber-400">10-bit 4:2:2</span>
+            </div>
+          </div>
+
+          <!-- Gear 2: Sony A7 IV (Camera) -->
+          <div class="gear-card p-6 rounded-2xl bg-dark-surface border border-slate-800 hover:border-amber-500/40 transition-all flex flex-col justify-between" data-gear-category="camera">
+            <div class="space-y-4">
+              <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-xl">
+                <i class="fa-solid fa-camera"></i>
+              </div>
+              <div>
+                <span class="text-[10px] font-mono text-cyan-400 font-bold uppercase tracking-widest">Hybrid Master</span>
+                <h4 class="text-lg font-bold text-white mt-1">Sony A7 IV</h4>
+                <p class="text-xs text-slate-400 mt-2">33MP full-frame sensor for ultra-sharp photography, real-time eye tracking autofocus, and dual card redundancy.</p>
+              </div>
+            </div>
+            <div class="pt-4 border-t border-slate-800/80 text-[11px] font-mono text-slate-500 flex justify-between">
+              <span>Photo & B-Cam</span>
+              <span class="text-cyan-400">33 Megapixels</span>
+            </div>
+          </div>
+
+          <!-- Gear 3: Sony 24-70mm GM II (Lens) -->
+          <div class="gear-card p-6 rounded-2xl bg-dark-surface border border-slate-800 hover:border-amber-500/40 transition-all flex flex-col justify-between" data-gear-category="lens">
+            <div class="space-y-4">
+              <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center text-xl">
+                <i class="fa-solid fa-circle-dot"></i>
+              </div>
+              <div>
+                <span class="text-[10px] font-mono text-purple-400 font-bold uppercase tracking-widest">G-Master Glass</span>
+                <h4 class="text-lg font-bold text-white mt-1">Sony FE 24-70mm f/2.8 GM II</h4>
+                <p class="text-xs text-slate-400 mt-2">The premier standard zoom lens. Unmatched edge-to-edge sharpness, lightning autofocus, and lightweight versatility.</p>
+              </div>
+            </div>
+            <div class="pt-4 border-t border-slate-800/80 text-[11px] font-mono text-slate-500 flex justify-between">
+              <span>Primary Zoom</span>
+              <span class="text-purple-400">Constant f/2.8</span>
+            </div>
+          </div>
+
+          <!-- Gear 4: Sony 85mm f/1.4 GM (Lens) -->
+          <div class="gear-card p-6 rounded-2xl bg-dark-surface border border-slate-800 hover:border-amber-500/40 transition-all flex flex-col justify-between" data-gear-category="lens">
+            <div class="space-y-4">
+              <div class="w-12 h-12 rounded-xl bg-rose-500/10 text-rose-400 flex items-center justify-center text-xl">
+                <i class="fa-solid fa-ring"></i>
+              </div>
+              <div>
+                <span class="text-[10px] font-mono text-rose-400 font-bold uppercase tracking-widest">Portrait & Bokeh</span>
+                <h4 class="text-lg font-bold text-white mt-1">Sony FE 85mm f/1.4 GM</h4>
+                <p class="text-xs text-slate-400 mt-2">The legendary portrait lens. Dreamy circular bokeh, razor sharp focal plane, and unmatched subject isolation for bridal shoots.</p>
+              </div>
+            </div>
+            <div class="pt-4 border-t border-slate-800/80 text-[11px] font-mono text-slate-500 flex justify-between">
+              <span>Prime Glass</span>
+              <span class="text-rose-400">f/1.4 Aperture</span>
+            </div>
+          </div>
+
+          <!-- Gear 5: DJI RS 3 Pro (Grip) -->
+          <div class="gear-card p-6 rounded-2xl bg-dark-surface border border-slate-800 hover:border-amber-500/40 transition-all flex flex-col justify-between" data-gear-category="lighting">
+            <div class="space-y-4">
+              <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl">
+                <i class="fa-solid fa-gamepad"></i>
+              </div>
+              <div>
+                <span class="text-[10px] font-mono text-emerald-400 font-bold uppercase tracking-widest">Cinematic Motion</span>
+                <h4 class="text-lg font-bold text-white mt-1">DJI RS 3 Pro Gimbal</h4>
+                <p class="text-xs text-slate-400 mt-2">Carbon fiber axis arms, automated axis locks, and 3rd-Gen RS stabilization algorithms for buttery smooth tracking shots.</p>
+              </div>
+            </div>
+            <div class="pt-4 border-t border-slate-800/80 text-[11px] font-mono text-slate-500 flex justify-between">
+              <span>Stabilization</span>
+              <span class="text-emerald-400">SuperSmooth</span>
+            </div>
+          </div>
+
+          <!-- Gear 6: Godox & Aputure Lighting (Lighting) -->
+          <div class="gear-card p-6 rounded-2xl bg-dark-surface border border-slate-800 hover:border-amber-500/40 transition-all flex flex-col justify-between" data-gear-category="lighting">
+            <div class="space-y-4">
+              <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-xl">
+                <i class="fa-solid fa-sun"></i>
+              </div>
+              <div>
+                <span class="text-[10px] font-mono text-amber-400 font-bold uppercase tracking-widest">Studio & Stage</span>
+                <h4 class="text-lg font-bold text-white mt-1">Aputure & Godox AD600</h4>
+                <p class="text-xs text-slate-400 mt-2">High-CRI daylight & bi-color continuous lighting with softboxes, beauty dishes, and Godox V1 high-speed sync wedding strobes.</p>
+              </div>
+            </div>
+            <div class="pt-4 border-t border-slate-800/80 text-[11px] font-mono text-slate-500 flex justify-between">
+              <span>Lighting Kit</span>
+              <span class="text-amber-400">CRI 96+</span>
+            </div>
+          </div>
+
+          <!-- Gear 7: Hollyland Wireless Audio (Audio & Rigging) -->
+          <div class="gear-card p-6 rounded-2xl bg-dark-surface border border-slate-800 hover:border-amber-500/40 transition-all flex flex-col justify-between" data-gear-category="lighting">
+            <div class="space-y-4">
+              <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-xl">
+                <i class="fa-solid fa-microphone-lines"></i>
+              </div>
+              <div>
+                <span class="text-[10px] font-mono text-indigo-400 font-bold uppercase tracking-widest">Sound & Wireless</span>
+                <h4 class="text-lg font-bold text-white mt-1">Hollyland Lark Max & Shotgun</h4>
+                <p class="text-xs text-slate-400 mt-2">Studio-quality 48kHz/24-bit wireless microphone systems with environmental noise cancellation for crisp vows and dialogue.</p>
+              </div>
+            </div>
+            <div class="pt-4 border-t border-slate-800/80 text-[11px] font-mono text-slate-500 flex justify-between">
+              <span>Audio Recording</span>
+              <span class="text-indigo-400">24-Bit Hi-Res</span>
+            </div>
+          </div>
+
+          <!-- Gear 8: DJI Air 3 Drone (Aerial) -->
+          <div class="gear-card p-6 rounded-2xl bg-dark-surface border border-slate-800 hover:border-amber-500/40 transition-all flex flex-col justify-between" data-gear-category="camera">
+            <div class="space-y-4">
+              <div class="w-12 h-12 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center text-xl">
+                <i class="fa-solid fa-helicopter"></i>
+              </div>
+              <div>
+                <span class="text-[10px] font-mono text-sky-400 font-bold uppercase tracking-widest">Aerial Perspectives</span>
+                <h4 class="text-lg font-bold text-white mt-1">DJI Air 3 Dual 4K Drone</h4>
+                <p class="text-xs text-slate-400 mt-2">Dual-primary cameras (24mm wide & 70mm medium telephoto), 4K/60fps HDR, 10-bit D-Log M for epic landscape reveals.</p>
+              </div>
+            </div>
+            <div class="pt-4 border-t border-slate-800/80 text-[11px] font-mono text-slate-500 flex justify-between">
+              <span>Aerial Cinema</span>
+              <span class="text-sky-400">Dual 4K HDR</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Software Ecosystem Suite (Featuring User's provided Logos!) -->
+        <div class="p-8 rounded-3xl bg-dark-surface border border-slate-800 space-y-8">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <span class="text-xs font-mono text-amber-400 uppercase tracking-widest font-bold">Post-Production Software Suite</span>
+              <h3 class="text-2xl font-bold text-white mt-1">Editing, Grading & Motion Design Tools</h3>
+            </div>
+            <p class="text-xs text-slate-400 max-w-md">
+              Industry-standard non-linear editing software, node-based color correction, and vector compositing.
+            </p>
+          </div>
+
+          <!-- Software Logos Grid -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-4">
+            
+            <!-- DaVinci Resolve -->
+            <div class="p-4 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-amber-500/50 transition-all flex flex-col items-center text-center gap-3 group">
+              <div class="w-14 h-14 rounded-xl overflow-hidden bg-slate-800 p-1 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                <img src="assets/software/davinci-resolve.jpg" alt="DaVinci Resolve Studio" class="w-full h-full object-contain rounded-lg">
+              </div>
+              <div>
+                <h5 class="text-xs font-bold text-white">DaVinci Resolve</h5>
+                <span class="text-[10px] text-amber-400 font-mono">Color & Master</span>
+              </div>
+              <div class="w-full bg-slate-800 rounded-full h-1.5 overflow-hidden">
+                <div class="bg-amber-400 h-full rounded-full" style="width: 98%;"></div>
+              </div>
+            </div>
+
+            <!-- Adobe Premiere Pro -->
+            <div class="p-4 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-purple-500/50 transition-all flex flex-col items-center text-center gap-3 group">
+              <div class="w-14 h-14 rounded-xl overflow-hidden bg-slate-800 p-1 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                <img src="assets/software/premiere-pro.jpg" alt="Adobe Premiere Pro" class="w-full h-full object-contain rounded-lg">
+              </div>
+              <div>
+                <h5 class="text-xs font-bold text-white">Premiere Pro</h5>
+                <span class="text-[10px] text-purple-400 font-mono">NLE Editing</span>
+              </div>
+              <div class="w-full bg-slate-800 rounded-full h-1.5 overflow-hidden">
+                <div class="bg-purple-400 h-full rounded-full" style="width: 95%;"></div>
+              </div>
+            </div>
+
+            <!-- Adobe After Effects -->
+            <div class="p-4 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-indigo-500/50 transition-all flex flex-col items-center text-center gap-3 group">
+              <div class="w-14 h-14 rounded-xl overflow-hidden bg-slate-800 p-1 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                <img src="assets/software/after-effects.jpg" alt="Adobe After Effects" class="w-full h-full object-contain rounded-lg">
+              </div>
+              <div>
+                <h5 class="text-xs font-bold text-white">After Effects</h5>
+                <span class="text-[10px] text-indigo-400 font-mono">VFX & Titles</span>
+              </div>
+              <div class="w-full bg-slate-800 rounded-full h-1.5 overflow-hidden">
+                <div class="bg-indigo-400 h-full rounded-full" style="width: 92%;"></div>
+              </div>
+            </div>
+
+            <!-- Adobe Photoshop -->
+            <div class="p-4 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-sky-500/50 transition-all flex flex-col items-center text-center gap-3 group">
+              <div class="w-14 h-14 rounded-xl overflow-hidden bg-slate-800 p-1 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                <img src="assets/software/photoshop.jpg" alt="Adobe Photoshop" class="w-full h-full object-contain rounded-lg">
+              </div>
+              <div>
+                <h5 class="text-xs font-bold text-white">Photoshop</h5>
+                <span class="text-[10px] text-sky-400 font-mono">Retouching</span>
+              </div>
+              <div class="w-full bg-slate-800 rounded-full h-1.5 overflow-hidden">
+                <div class="bg-sky-400 h-full rounded-full" style="width: 94%;"></div>
+              </div>
+            </div>
+
+            <!-- Apple Final Cut Pro -->
+            <div class="p-4 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-pink-500/50 transition-all flex flex-col items-center text-center gap-3 group">
+              <div class="w-14 h-14 rounded-xl overflow-hidden bg-slate-800 p-1 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                <img src="assets/software/final-cut-pro.jpg" alt="Final Cut Pro" class="w-full h-full object-contain rounded-lg">
+              </div>
+              <div>
+                <h5 class="text-xs font-bold text-white">Final Cut Pro</h5>
+                <span class="text-[10px] text-pink-400 font-mono">Fast Edits</span>
+              </div>
+              <div class="w-full bg-slate-800 rounded-full h-1.5 overflow-hidden">
+                <div class="bg-pink-400 h-full rounded-full" style="width: 90%;"></div>
+              </div>
+            </div>
+
+            <!-- Avid Media Composer -->
+            <div class="p-4 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-violet-500/50 transition-all flex flex-col items-center text-center gap-3 group">
+              <div class="w-14 h-14 rounded-xl overflow-hidden bg-slate-800 p-1 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                <img src="assets/software/avid.jpg" alt="Avid Media Composer" class="w-full h-full object-contain rounded-lg">
+              </div>
+              <div>
+                <h5 class="text-xs font-bold text-white">Avid Media</h5>
+                <span class="text-[10px] text-violet-400 font-mono">Film Narrative</span>
+              </div>
+              <div class="w-full bg-slate-800 rounded-full h-1.5 overflow-hidden">
+                <div class="bg-violet-400 h-full rounded-full" style="width: 86%;"></div>
+              </div>
+            </div>
+
+            <!-- Figma -->
+            <div class="p-4 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-orange-500/50 transition-all flex flex-col items-center text-center gap-3 group">
+              <div class="w-14 h-14 rounded-xl overflow-hidden bg-slate-800 p-1 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                <img src="assets/software/figma.jpg" alt="Figma Design" class="w-full h-full object-contain rounded-lg">
+              </div>
+              <div>
+                <h5 class="text-xs font-bold text-white">Figma</h5>
+                <span class="text-[10px] text-orange-400 font-mono">Storyboards</span>
+              </div>
+              <div class="w-full bg-slate-800 rounded-full h-1.5 overflow-hidden">
+                <div class="bg-orange-400 h-full rounded-full" style="width: 85%;"></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- 8. SERVICES SECTION -->
+    <section id="services" class="py-24 px-4 sm:px-8 border-t border-slate-800/80 relative">
+      <div class="max-w-7xl mx-auto space-y-16">
+        
+        <!-- Header -->
+        <div class="flex flex-col items-center text-center space-y-3">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold uppercase tracking-widest">
+            <i class="fa-solid fa-gem"></i>
+            <span data-i18n="services_tag">Client Offerings</span>
+          </div>
+          <h2 class="text-3xl sm:text-5xl font-extrabold text-white font-heading tracking-tight" data-i18n="services_heading">
+            Services & <span class="text-amber-400">Packages</span>
+          </h2>
+          <p class="text-slate-400 text-sm sm:text-base max-w-2xl" data-i18n="services_subtitle">
+            Tailored creative packages designed to elevate personal milestones, commercial brands, and cinema projects.
+          </p>
+        </div>
+
+        <!-- 5 Core Services Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          
+          <!-- Service 1: Photography -->
+          <div class="service-card p-8 rounded-3xl bg-dark-surface border border-slate-800 hover:border-amber-500/50 transition-all flex flex-col justify-between shadow-xl group">
+            <div class="space-y-6">
+              <div class="w-14 h-14 rounded-2xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+                <i class="fa-solid fa-camera"></i>
+              </div>
+              <div>
+                <span class="text-xs font-mono text-amber-400 font-bold uppercase tracking-widest">Still Imagery</span>
+                <h3 class="text-2xl font-bold text-white mt-1" data-i18n="srv_photo_title">Photography</h3>
+                <p class="text-xs text-slate-400 mt-2 leading-relaxed" data-i18n="srv_photo_desc">
+                  High-resolution editorial, candid, portrait, and event photo sessions capturing real emotions with pristine natural and studio lighting.
+                </p>
+              </div>
+              <ul class="space-y-2.5 text-xs text-slate-300">
+                <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-amber-400 text-[10px]"></i> Traditional & Candid Photos</li>
+                <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-amber-400 text-[10px]"></i> High-End Portrait Retouching</li>
+                <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-amber-400 text-[10px]"></i> High-Res Online Gallery Delivery</li>
+                <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-amber-400 text-[10px]"></i> Destination & Outdoor Sessions</li>
+              </ul>
+            </div>
+            <div class="pt-6 mt-6 border-t border-slate-800">
+              <a href="#contact" class="book-service-btn w-full inline-flex items-center justify-center gap-2 py-3 rounded-xl bg-slate-800 hover:bg-amber-500 hover:text-dark text-slate-200 font-bold text-xs uppercase tracking-wider transition-all" data-service-select="Photography">
+                <span>Book Photography</span>
+                <i class="fa-solid fa-arrow-right text-xs"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Service 2: Videography -->
+          <div class="service-card p-8 rounded-3xl bg-dark-surface border border-slate-800 hover:border-cyan-500/50 transition-all flex flex-col justify-between shadow-xl group">
+            <div class="space-y-6">
+              <div class="w-14 h-14 rounded-2xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+                <i class="fa-solid fa-video"></i>
+              </div>
+              <div>
+                <span class="text-xs font-mono text-cyan-400 font-bold uppercase tracking-widest">Motion Cinema</span>
+                <h3 class="text-2xl font-bold text-white mt-1" data-i18n="srv_video_title">Videography</h3>
+                <p class="text-xs text-slate-400 mt-2 leading-relaxed" data-i18n="srv_video_desc">
+                  Full 4K cinema multi-cam shoot setups, stabilized gimbal tracking shots, high-fidelity wireless audio capture, and 4K aerial drone coverage.
+                </p>
+              </div>
+              <ul class="space-y-2.5 text-xs text-slate-300">
+                <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-cyan-400 text-[10px]"></i> Sony Cinema FX3 4K 120fps</li>
+                <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-cyan-400 text-[10px]"></i> DJI 4K Drone Aerial Shots</li>
+                <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-cyan-400 text-[10px]"></i> Commercial Ads & Brand Films</li>
+                <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-cyan-400 text-[10px]"></i> Concert & Event Coverage</li>
+              </ul>
+            </div>
+            <div class="pt-6 mt-6 border-t border-slate-800">
+              <a href="#contact" class="book-service-btn w-full inline-flex items-center justify-center gap-2 py-3 rounded-xl bg-slate-800 hover:bg-cyan-500 hover:text-dark text-slate-200 font-bold text-xs uppercase tracking-wider transition-all" data-service-select="Videography">
+                <span>Book Videography</span>
+                <i class="fa-solid fa-arrow-right text-xs"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Service 3: Wedding Cinematic Films (Featured) -->
+          <div class="service-card p-8 rounded-3xl bg-gradient-to-b from-slate-900 to-dark-surface border-2 border-amber-500/40 relative shadow-2xl flex flex-col justify-between group">
+            <span class="absolute -top-3.5 right-6 px-3 py-1 rounded-full bg-gradient-to-r from-amber-500 to-amber-300 text-dark font-black text-[10px] uppercase tracking-wider shadow">
+              Most Popular
+            </span>
+            <div class="space-y-6">
+              <div class="w-14 h-14 rounded-2xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+                <i class="fa-solid fa-clapperboard"></i>
+              </div>
+              <div>
+                <span class="text-xs font-mono text-amber-400 font-bold uppercase tracking-widest">Signature Masterpiece</span>
+                <h3 class="text-2xl font-bold text-white mt-1" data-i18n="srv_wedding_title">Wedding Cinematic Films</h3>
+                <p class="text-xs text-slate-400 mt-2 leading-relaxed" data-i18n="srv_wedding_desc">
+                  An unforgettable feature film of your love story. Includes 1-minute Instagram teaser, 4-6 minute emotional highlight, and full ceremony documentary.
+                </p>
+              </div>
+              <ul class="space-y-2.5 text-xs text-slate-300">
+                <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-amber-400 text-[10px]"></i> 1-Min Viral Reel + 5-Min 4K Film</li>
+                <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-amber-400 text-[10px]"></i> Complete Vows & Speech Audio</li>
+                <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-amber-400 text-[10px]"></i> Premium Color Grading & Foley</li>
+                <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-amber-400 text-[10px]"></i> Custom Wooden Flash Drive Box</li>
+              </ul>
+            </div>
+            <div class="pt-6 mt-6 border-t border-slate-800">
+              <a href="#contact" class="book-service-btn w-full inline-flex items-center justify-center gap-2 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-dark font-black text-xs uppercase tracking-wider transition-all shadow-lg shadow-amber-500/20" data-service-select="Wedding Cinematic Films">
+                <span>Book Wedding Film</span>
+                <i class="fa-solid fa-arrow-right text-xs"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Service 4: Video Editing -->
+          <div class="service-card p-8 rounded-3xl bg-dark-surface border border-slate-800 hover:border-purple-500/50 transition-all flex flex-col justify-between shadow-xl group">
+            <div class="space-y-6">
+              <div class="w-14 h-14 rounded-2xl bg-purple-500/10 text-purple-400 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+                <i class="fa-solid fa-scissors"></i>
+              </div>
+              <div>
+                <span class="text-xs font-mono text-purple-400 font-bold uppercase tracking-widest">Post-Production</span>
+                <h3 class="text-2xl font-bold text-white mt-1" data-i18n="srv_edit_title">Video Editing</h3>
+                <p class="text-xs text-slate-400 mt-2 leading-relaxed" data-i18n="srv_edit_desc">
+                  Transform raw footage into cohesive, high-retention stories. Seamless rhythm cuts, sound engineering, multi-track audio mixing, and format delivery.
+                </p>
+              </div>
+              <ul class="space-y-2.5 text-xs text-slate-300">
+                <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-purple-400 text-[10px]"></i> YouTube Long-Form & Docu-Edits</li>
+                <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-purple-400 text-[10px]"></i> Dynamic 9:16 Instagram Reels</li>
+                <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-purple-400 text-[10px]"></i> Sound Design & Foley Mixing</li>
+                <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-purple-400 text-[10px]"></i> 48-Hour Turnaround Available</li>
+              </ul>
+            </div>
+            <div class="pt-6 mt-6 border-t border-slate-800">
+              <a href="#contact" class="book-service-btn w-full inline-flex items-center justify-center gap-2 py-3 rounded-xl bg-slate-800 hover:bg-purple-500 hover:text-white text-slate-200 font-bold text-xs uppercase tracking-wider transition-all" data-service-select="Video Editing">
+                <span>Book Video Editing</span>
+                <i class="fa-solid fa-arrow-right text-xs"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Service 5: Color Grading & Motion Graphics -->
+          <div class="service-card p-8 rounded-3xl bg-dark-surface border border-slate-800 hover:border-emerald-500/50 transition-all flex flex-col justify-between shadow-xl group">
+            <div class="space-y-6">
+              <div class="w-14 h-14 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+                <i class="fa-solid fa-palette"></i>
+              </div>
+              <div>
+                <span class="text-xs font-mono text-emerald-400 font-bold uppercase tracking-widest">Color & Motion</span>
+                <h3 class="text-2xl font-bold text-white mt-1" data-i18n="srv_color_title">Color Grading & Motion</h3>
+                <p class="text-xs text-slate-400 mt-2 leading-relaxed" data-i18n="srv_color_desc">
+                  DaVinci Resolve node-based color correction, look development, HDR & SDR color management, custom title animation, and After Effects motion graphics.
+                </p>
+              </div>
+              <ul class="space-y-2.5 text-xs text-slate-300">
+                <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-emerald-400 text-[10px]"></i> S-Log3, Canon Log, Apple Log</li>
+                <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-emerald-400 text-[10px]"></i> Custom Show LUT Creation</li>
+                <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-emerald-400 text-[10px]"></i> 3D Title Card Animation</li>
+                <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-emerald-400 text-[10px]"></i> Lower Thirds & Kinetic Text</li>
+              </ul>
+            </div>
+            <div class="pt-6 mt-6 border-t border-slate-800">
+              <a href="#contact" class="book-service-btn w-full inline-flex items-center justify-center gap-2 py-3 rounded-xl bg-slate-800 hover:bg-emerald-500 hover:text-dark text-slate-200 font-bold text-xs uppercase tracking-wider transition-all" data-service-select="Color Grading & Motion Graphics">
+                <span>Book Color Grading</span>
+                <i class="fa-solid fa-arrow-right text-xs"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Quick Customized Inquiry Card -->
+          <div class="service-card p-8 rounded-3xl bg-dark-surface border border-dashed border-slate-700 flex flex-col justify-between text-center items-center shadow-xl">
+            <div class="space-y-4 my-auto">
+              <div class="w-16 h-16 rounded-full bg-amber-500/10 text-amber-400 flex items-center justify-center text-2xl mx-auto">
+                <i class="fa-solid fa-sparkles"></i>
+              </div>
+              <h3 class="text-xl font-bold text-white">Need a Custom Package?</h3>
+              <p class="text-xs text-slate-400 max-w-xs leading-relaxed">
+                Have an ad campaign, documentary, destination shoot, or monthly editing retainer? Let's tailor a bespoke quote.
+              </p>
+            </div>
+            <a href="https://wa.me/919876543210?text=Hello%20Muthu%20Kumar,%20I%20need%20a%20custom%20package%20quote%20for%20my%20project!" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center gap-2 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-white font-bold text-xs uppercase tracking-wider transition-all">
+              <i class="fa-brands fa-whatsapp text-sm"></i>
+              <span>Chat on WhatsApp</span>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- 9. CLIENT REVIEWS & TESTIMONIALS -->
+    <section id="reviews" class="py-24 px-4 sm:px-8 border-t border-slate-800/80 bg-slate-950/40 relative">
+      <div class="max-w-7xl mx-auto space-y-16">
+        
+        <!-- Header -->
+        <div class="flex flex-col items-center text-center space-y-3">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold uppercase tracking-widest">
+            <i class="fa-solid fa-star"></i>
+            <span data-i18n="reviews_tag">Social Proof</span>
+          </div>
+          <h2 class="text-3xl sm:text-5xl font-extrabold text-white font-heading tracking-tight" data-i18n="reviews_heading">
+            Client <span class="text-amber-400">Reviews</span> & Words
+          </h2>
+          <p class="text-slate-400 text-sm sm:text-base max-w-2xl" data-i18n="reviews_subtitle">
+            Heartfelt testimonials from wedding couples, brand directors, and content creators who trusted my visual lens.
+          </p>
+        </div>
+
+        <!-- Reviews Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          
+          <!-- Review 1: Wedding Couple -->
+          <div class="p-8 rounded-3xl bg-dark-surface border border-slate-800 hover:border-amber-500/40 transition-all flex flex-col justify-between space-y-6 shadow-xl relative">
+            <div class="space-y-4">
+              <!-- Stars -->
+              <div class="flex items-center gap-1 text-amber-400 text-sm">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <p class="text-sm text-slate-300 italic leading-relaxed">
+                "Muthu Kumar captured our wedding like a Mani Ratnam movie! The emotions, the candid smiles, the color grading – our families were in tears watching the teaser. Truly gifted with the camera."
+              </p>
+            </div>
+            <div class="pt-4 border-t border-slate-800 flex items-center gap-3">
+              <div class="w-11 h-11 rounded-full bg-gradient-to-tr from-amber-500 to-amber-300 text-dark font-black flex items-center justify-center text-sm shadow">
+                KD
+              </div>
+              <div>
+                <h4 class="font-bold text-white text-sm">Karthik & Divya</h4>
+                <p class="text-xs text-slate-400">Chennai · Royal Wedding Film</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 2: Brand Media Director -->
+          <div class="p-8 rounded-3xl bg-dark-surface border border-slate-800 hover:border-cyan-500/40 transition-all flex flex-col justify-between space-y-6 shadow-xl relative">
+            <div class="space-y-4">
+              <div class="flex items-center gap-1 text-amber-400 text-sm">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <p class="text-sm text-slate-300 italic leading-relaxed">
+                "As a brand director, finding someone who genuinely understands pacing, modern Instagram reels, and filmic DaVinci color grading is rare. Muthu delivers speed and perfection every single time."
+              </p>
+            </div>
+            <div class="pt-4 border-t border-slate-800 flex items-center gap-3">
+              <div class="w-11 h-11 rounded-full bg-gradient-to-tr from-cyan-500 to-blue-500 text-white font-black flex items-center justify-center text-sm shadow">
+                RV
+              </div>
+              <div>
+                <h4 class="font-bold text-white text-sm">Rajesh Varma</h4>
+                <p class="text-xs text-slate-400">Pixel Wave Media · Commercial Ad Series</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 3: Creative Director / Artboard Collector -->
+          <div class="p-8 rounded-3xl bg-dark-surface border border-slate-800 hover:border-emerald-500/40 transition-all flex flex-col justify-between space-y-6 shadow-xl relative">
+            <div class="space-y-4">
+              <div class="flex items-center gap-1 text-amber-400 text-sm">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <p class="text-sm text-slate-300 italic leading-relaxed">
+                "His photography has soul. The way he documented rural Tamil Nadu in his creative artboards speaks volumes about his artistic depth. He finds poetry in what others overlook."
+              </p>
+            </div>
+            <div class="pt-4 border-t border-slate-800 flex items-center gap-3">
+              <div class="w-11 h-11 rounded-full bg-gradient-to-tr from-emerald-500 to-teal-400 text-dark font-black flex items-center justify-center text-sm shadow">
+                AS
+              </div>
+              <div>
+                <h4 class="font-bold text-white text-sm">Ananya Sundaram</h4>
+                <p class="text-xs text-slate-400">Creative Director · Art & Culture Studio</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 4: Pre-Wedding Couple -->
+          <div class="p-8 rounded-3xl bg-dark-surface border border-slate-800 hover:border-rose-500/40 transition-all flex flex-col justify-between space-y-6 shadow-xl relative">
+            <div class="space-y-4">
+              <div class="flex items-center gap-1 text-amber-400 text-sm">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <p class="text-sm text-slate-300 italic leading-relaxed">
+                "We were both very camera-shy, but Muthu made us feel so comfortable. He gave us space to be ourselves and captured candid moments that look straight out of a classic movie."
+              </p>
+            </div>
+            <div class="pt-4 border-t border-slate-800 flex items-center gap-3">
+              <div class="w-11 h-11 rounded-full bg-gradient-to-tr from-rose-500 to-amber-400 text-white font-black flex items-center justify-center text-sm shadow">
+                VP
+              </div>
+              <div>
+                <h4 class="font-bold text-white text-sm">Vignesh & Priya</h4>
+                <p class="text-xs text-slate-400">Coimbatore · Pre-Wedding Shoot</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 5: Music Producer / Indie Filmmaker -->
+          <div class="p-8 rounded-3xl bg-dark-surface border border-slate-800 hover:border-purple-500/40 transition-all flex flex-col justify-between space-y-6 shadow-xl relative">
+            <div class="space-y-4">
+              <div class="flex items-center gap-1 text-amber-400 text-sm">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <p class="text-sm text-slate-300 italic leading-relaxed">
+                "His understanding of music and cut points is phenomenal. He cut our indie music video in record time and the DaVinci grade gave it a gritty, high-budget cinematic look."
+              </p>
+            </div>
+            <div class="pt-4 border-t border-slate-800 flex items-center gap-3">
+              <div class="w-11 h-11 rounded-full bg-gradient-to-tr from-purple-500 to-indigo-500 text-white font-black flex items-center justify-center text-sm shadow">
+                SK
+              </div>
+              <div>
+                <h4 class="font-bold text-white text-sm">Siddharth Kumar</h4>
+                <p class="text-xs text-slate-400">Independent Music Producer</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 6: Corporate Client -->
+          <div class="p-8 rounded-3xl bg-dark-surface border border-slate-800 hover:border-amber-500/40 transition-all flex flex-col justify-between space-y-6 shadow-xl relative">
+            <div class="space-y-4">
+              <div class="flex items-center gap-1 text-amber-400 text-sm">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <p class="text-sm text-slate-300 italic leading-relaxed">
+                "Muthu covered our 3-day tech summit in Chennai. Flawless multicam coverage, crisp audio, and he had our daily highlight video delivered every morning at 7 AM. 10/10 professionalism."
+              </p>
+            </div>
+            <div class="pt-4 border-t border-slate-800 flex items-center gap-3">
+              <div class="w-11 h-11 rounded-full bg-gradient-to-tr from-amber-400 to-emerald-400 text-dark font-black flex items-center justify-center text-sm shadow">
+                MR
+              </div>
+              <div>
+                <h4 class="font-bold text-white text-sm">Madhavan R.</h4>
+                <p class="text-xs text-slate-400">Apex Tech Conclave · Event Head</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- CALL TO ACTION BANNER (Inspired by user's reference mockup) -->
+    <section class="py-12 px-4 sm:px-8">
+      <div class="max-w-7xl mx-auto rounded-3xl bg-gradient-to-r from-red-950 via-slate-900 to-amber-950/60 border border-red-500/30 p-8 sm:p-12 shadow-2xl relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8">
+        <div class="space-y-2 text-center md:text-left z-10">
+          <span class="text-xs font-mono text-red-400 font-bold uppercase tracking-widest">LET'S TALK</span>
+          <h3 class="text-3xl sm:text-4xl font-extrabold text-white font-heading">
+            Got a Project in Mind?
+          </h3>
+          <p class="text-slate-300 text-sm sm:text-base max-w-lg">
+            I'm always open to new opportunities, collaborations, and exciting cinematic projects. Let's create something unforgettable!
+          </p>
+        </div>
+        <div class="z-10 flex flex-wrap gap-4">
+          <a href="#contact" class="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-red-600 to-amber-500 text-white font-black text-sm uppercase tracking-wider shadow-xl shadow-red-500/25 hover:shadow-red-500/40 hover:-translate-y-0.5 transition-all">
+            <span>Contact Me</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+        <!-- Abstract gradient circles in banner -->
+        <div class="absolute -right-20 -bottom-20 w-80 h-80 rounded-full bg-red-600/20 blur-3xl pointer-events-none"></div>
+        <div class="absolute -left-20 -top-20 w-80 h-80 rounded-full bg-amber-500/15 blur-3xl pointer-events-none"></div>
+      </div>
+    </section>
+
+
+    <!-- 10. CONTACT / HIRE ME SECTION -->
+    <section id="contact" class="py-24 px-4 sm:px-8 border-t border-slate-800/80 relative">
+      <div class="max-w-7xl mx-auto space-y-16">
+        
+        <!-- Header -->
+        <div class="flex flex-col items-center text-center space-y-3">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold uppercase tracking-widest">
+            <i class="fa-solid fa-paper-plane"></i>
+            <span data-i18n="contact_tag">Get in Touch</span>
+          </div>
+          <h2 class="text-3xl sm:text-5xl font-extrabold text-white font-heading tracking-tight" data-i18n="contact_heading">
+            Contact & <span class="text-amber-400">Hire Me</span>
+          </h2>
+          <p class="text-slate-400 text-sm sm:text-base max-w-2xl" data-i18n="contact_subtitle">
+            Whether you want to document your wedding, shoot a brand commercial, or need high-end video editing, let's connect today.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+          
+          <!-- Left Column: Contact Channels & Info -->
+          <div class="lg:col-span-5 space-y-6">
+            
+            <div class="p-8 rounded-3xl bg-dark-surface border border-slate-800 shadow-xl space-y-6">
+              <h3 class="text-xl font-bold text-white">Direct Connect</h3>
+              <p class="text-xs text-slate-400 leading-relaxed">
+                Reach out directly via WhatsApp for fastest response, or drop an email with your project brief.
+              </p>
+
+              <!-- Channels -->
+              <div class="space-y-4">
+                
+                <!-- WhatsApp -->
+                <a href="https://wa.me/919876543210?text=Hello%20Muthu%20Kumar,%20I%20would%20like%20to%20discuss%20a%20photography%20or%20video%20project!" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 hover:bg-emerald-500/20 text-white transition-all group">
+                  <div class="w-12 h-12 rounded-xl bg-emerald-500 text-white flex items-center justify-center text-2xl shadow-lg shadow-emerald-500/30 group-hover:scale-110 transition-transform">
+                    <i class="fa-brands fa-whatsapp"></i>
+                  </div>
+                  <div>
+                    <span class="text-[11px] font-mono text-emerald-400 font-bold uppercase">Fastest Response</span>
+                    <h4 class="text-sm font-bold text-white group-hover:text-emerald-300">WhatsApp Chat</h4>
+                    <p class="text-xs text-slate-400">+91 98765 43210</p>
+                  </div>
+                </a>
+
+                <!-- Instagram -->
+                <a href="https://instagram.com/muthukumar.visuals" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-4 rounded-2xl bg-pink-500/10 border border-pink-500/30 hover:bg-pink-500/20 text-white transition-all group">
+                  <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 text-white flex items-center justify-center text-2xl shadow-lg group-hover:scale-110 transition-transform">
+                    <i class="fa-brands fa-instagram"></i>
+                  </div>
+                  <div>
+                    <span class="text-[11px] font-mono text-pink-400 font-bold uppercase">Visual Feed & Reels</span>
+                    <h4 class="text-sm font-bold text-white group-hover:text-pink-300">Instagram</h4>
+                    <p class="text-xs text-slate-400">@muthukumar.visuals</p>
+                  </div>
+                </a>
+
+                <!-- Email -->
+                <a href="mailto:muthukumar.visuals@gmail.com" class="flex items-center gap-4 p-4 rounded-2xl bg-amber-500/10 border border-amber-500/30 hover:bg-amber-500/20 text-white transition-all group">
+                  <div class="w-12 h-12 rounded-xl bg-amber-500 text-dark flex items-center justify-center text-2xl shadow-lg group-hover:scale-110 transition-transform">
+                    <i class="fa-regular fa-envelope"></i>
+                  </div>
+                  <div>
+                    <span class="text-[11px] font-mono text-amber-400 font-bold uppercase">Official Mail</span>
+                    <h4 class="text-sm font-bold text-white group-hover:text-amber-300">Email Enquiries</h4>
+                    <p class="text-xs text-slate-400">muthukumar.visuals@gmail.com</p>
+                  </div>
+                </a>
+
+                <!-- Location -->
+                <div class="flex items-center gap-4 p-4 rounded-2xl bg-slate-900 border border-slate-800 text-white">
+                  <div class="w-12 h-12 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center text-2xl">
+                    <i class="fa-solid fa-location-dot"></i>
+                  </div>
+                  <div>
+                    <span class="text-[11px] font-mono text-cyan-400 font-bold uppercase">Location & Studio</span>
+                    <h4 class="text-sm font-bold text-white">Chennai, Tamil Nadu, India</h4>
+                    <p class="text-xs text-slate-400">Available for Destination Shoots Worldwide</p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Right Column: Interactive Project Enquiry Form -->
+          <div class="lg:col-span-7">
+            <div class="p-8 sm:p-10 rounded-3xl bg-dark-surface border border-slate-800 shadow-2xl relative">
+              <div class="space-y-2 mb-8">
+                <span class="text-xs font-mono text-amber-400 uppercase tracking-widest font-bold">Project Enquiry Form</span>
+                <h3 class="text-2xl font-bold text-white">Tell Me About Your Vision</h3>
+                <p class="text-xs text-slate-400">
+                  Fill in your project details. You can submit directly or auto-generate a pre-filled WhatsApp message in one tap!
+                </p>
+              </div>
+
+              <form id="project-enquiry-form" class="space-y-6">
+                
+                <!-- Row 1: Name & Phone -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div class="space-y-2">
+                    <label for="client-name" class="text-xs font-bold text-slate-300 uppercase tracking-wider block">Your Name *</label>
+                    <input type="text" id="client-name" name="client-name" required placeholder="e.g. Vignesh or Karthik" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700/80 text-white placeholder-slate-500 text-sm focus:border-amber-400 focus:outline-none transition-colors">
+                  </div>
+                  <div class="space-y-2">
+                    <label for="client-phone" class="text-xs font-bold text-slate-300 uppercase tracking-wider block">WhatsApp / Phone *</label>
+                    <input type="tel" id="client-phone" name="client-phone" required placeholder="+91 98765 43210" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700/80 text-white placeholder-slate-500 text-sm focus:border-amber-400 focus:outline-none transition-colors">
+                  </div>
+                </div>
+
+                <!-- Row 2: Email & Service Required -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div class="space-y-2">
+                    <label for="client-email" class="text-xs font-bold text-slate-300 uppercase tracking-wider block">Email Address *</label>
+                    <input type="email" id="client-email" name="client-email" required placeholder="youremail@example.com" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700/80 text-white placeholder-slate-500 text-sm focus:border-amber-400 focus:outline-none transition-colors">
+                  </div>
+                  <div class="space-y-2">
+                    <label for="client-service" class="text-xs font-bold text-slate-300 uppercase tracking-wider block">Service Required *</label>
+                    <select id="client-service" name="client-service" required class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700/80 text-white text-sm focus:border-amber-400 focus:outline-none transition-colors">
+                      <option value="Wedding Cinematic Films">Wedding Cinematic Films</option>
+                      <option value="Photography">Photography (Portrait/Candid/Event)</option>
+                      <option value="Videography">Videography & Commercial Films</option>
+                      <option value="Video Editing">Video Editing (YouTube / Reels / Film)</option>
+                      <option value="Color Grading & Motion Graphics">Color Grading & Motion Graphics</option>
+                      <option value="Custom Complete Package">Custom Complete Package</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- Row 3: Event Date & Location -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div class="space-y-2">
+                    <label for="event-date" class="text-xs font-bold text-slate-300 uppercase tracking-wider block">Shoot / Event Date</label>
+                    <input type="date" id="event-date" name="event-date" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700/80 text-white text-sm focus:border-amber-400 focus:outline-none transition-colors">
+                  </div>
+                  <div class="space-y-2">
+                    <label for="event-location" class="text-xs font-bold text-slate-300 uppercase tracking-wider block">Event / Shoot Location</label>
+                    <input type="text" id="event-location" name="event-location" placeholder="e.g. Chennai, Madurai, Bengaluru" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700/80 text-white placeholder-slate-500 text-sm focus:border-amber-400 focus:outline-none transition-colors">
+                  </div>
+                </div>
+
+                <!-- Row 4: Budget Range -->
+                <div class="space-y-2">
+                  <label for="client-budget" class="text-xs font-bold text-slate-300 uppercase tracking-wider block">Estimated Budget Range</label>
+                  <select id="client-budget" name="client-budget" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700/80 text-white text-sm focus:border-amber-400 focus:outline-none transition-colors">
+                    <option value="Flexible / To Be Discussed">Flexible / To Be Discussed</option>
+                    <option value="₹15,000 - ₹35,000">₹15,000 - ₹35,000 (Video Edit / Reels / Portraits)</option>
+                    <option value="₹35,000 - ₹75,000">₹35,000 - ₹75,000 (Events / Pre-Wedding / Commercial)</option>
+                    <option value="₹75,000 - ₹1,50,000">₹75,000 - ₹1,50,000 (Full Wedding Cinema / Multi-Cam)</option>
+                    <option value="₹1,50,000+">₹1,50,000+ (Grand Destination Wedding / Premium Ad)</option>
+                  </select>
+                </div>
+
+                <!-- Row 5: Message / Vision -->
+                <div class="space-y-2">
+                  <label for="client-message" class="text-xs font-bold text-slate-300 uppercase tracking-wider block">Project Details & Vision</label>
+                  <textarea id="client-message" name="client-message" rows="4" placeholder="Tell me about your event, schedule, preferred vibe or music, deliverable count, etc..." class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700/80 text-white placeholder-slate-500 text-sm focus:border-amber-400 focus:outline-none transition-colors"></textarea>
+                </div>
+
+                <!-- Submit Action Buttons -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                  
+                  <!-- Option A: Send via Direct WhatsApp (Pre-filled query) -->
+                  <button type="button" id="send-whatsapp-btn" class="w-full inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-emerald-500/20 transition-all cursor-pointer">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Send via WhatsApp</span>
+                  </button>
+
+                  <!-- Option B: Direct Form Submit -->
+                  <button type="submit" class="w-full inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-400 text-dark font-black text-xs uppercase tracking-wider shadow-lg shadow-amber-500/20 hover:shadow-amber-500/40 transition-all cursor-pointer">
+                    <i class="fa-solid fa-paper-plane text-xs"></i>
+                    <span>Submit Enquiry</span>
+                  </button>
+
+                </div>
+
+              </form>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer class="border-t border-slate-800/80 bg-slate-950 py-12 px-4 sm:px-8 relative z-10">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+      
+      <!-- Logo & Bio -->
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 to-amber-300 flex items-center justify-center font-black text-dark text-lg shadow">
+          MK
+        </div>
+        <div>
+          <span class="font-bold text-white text-sm block">MUTHU KUMAR</span>
+          <span class="text-xs text-slate-500">Photographer | Videographer | Video Editor</span>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="flex flex-wrap items-center justify-center gap-6 text-xs text-slate-400 font-medium">
+        <a href="#hero" class="hover:text-amber-400 transition-colors">Home</a>
+        <a href="#about" class="hover:text-amber-400 transition-colors">About</a>
+        <a href="#photography" class="hover:text-amber-400 transition-colors">Photography</a>
+        <a href="#videography" class="hover:text-amber-400 transition-colors">Videography</a>
+        <a href="#editing" class="hover:text-amber-400 transition-colors">Video Editing</a>
+        <a href="#equipment" class="hover:text-amber-400 transition-colors">Gear</a>
+        <a href="#services" class="hover:text-amber-400 transition-colors">Services</a>
+        <a href="#contact" class="hover:text-amber-400 transition-colors">Contact</a>
+      </div>
+
+      <!-- Socials & Copyright -->
+      <div class="flex flex-col sm:flex-row items-center gap-4 text-xs text-slate-500">
+        <div class="flex items-center gap-3 text-slate-400">
+          <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-400 transition-colors"><i class="fa-brands fa-whatsapp text-base"></i></a>
+          <a href="https://instagram.com/muthukumar.visuals" target="_blank" rel="noopener noreferrer" class="hover:text-pink-400 transition-colors"><i class="fa-brands fa-instagram text-base"></i></a>
+          <a href="mailto:muthukumar.visuals@gmail.com" class="hover:text-amber-400 transition-colors"><i class="fa-regular fa-envelope text-base"></i></a>
+        </div>
+        <span>&copy; 2026 Muthu Kumar. All rights reserved.</span>
+      </div>
+
+    </div>
+  </footer>
+
+
+  <!-- LIGHTBOX MODAL (For Photography) -->
+  <div id="lightbox-modal" class="fixed inset-0 z-50 bg-dark/95 backdrop-blur-xl hidden flex-col items-center justify-center p-4 sm:p-8 opacity-0 transition-opacity duration-300">
+    <!-- Close Button -->
+    <button id="lightbox-close-btn" class="absolute top-6 right-6 z-50 w-11 h-11 rounded-full bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-white flex items-center justify-center text-lg border border-slate-700 transition-all cursor-pointer">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+
+    <!-- Nav Arrows -->
+    <button id="lightbox-prev-btn" class="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 z-50 w-12 h-12 rounded-full bg-slate-800/80 hover:bg-amber-500 hover:text-dark text-slate-300 flex items-center justify-center text-lg border border-slate-700 transition-all cursor-pointer">
+      <i class="fa-solid fa-chevron-left"></i>
+    </button>
+    <button id="lightbox-next-btn" class="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 z-50 w-12 h-12 rounded-full bg-slate-800/80 hover:bg-amber-500 hover:text-dark text-slate-300 flex items-center justify-center text-lg border border-slate-700 transition-all cursor-pointer">
+      <i class="fa-solid fa-chevron-right"></i>
+    </button>
+
+    <!-- Image & Details Container -->
+    <div class="max-w-5xl max-h-[85vh] w-full flex flex-col md:flex-row items-center gap-6 overflow-hidden">
+      <!-- Image Display -->
+      <div class="flex-1 max-h-[70vh] flex items-center justify-center overflow-hidden">
+        <img id="lightbox-img" src="" alt="Portfolio preview" class="max-h-[70vh] max-w-full object-contain rounded-2xl shadow-2xl">
+      </div>
+      <!-- Details Panel -->
+      <div class="w-full md:w-80 p-6 rounded-2xl bg-dark-surface border border-slate-800 space-y-4">
+        <div>
+          <span id="lightbox-category" class="text-xs font-mono uppercase tracking-widest text-amber-400 font-bold">Category</span>
+          <h3 id="lightbox-title" class="text-xl font-bold text-white mt-1">Image Title</h3>
+        </div>
+        <p id="lightbox-desc" class="text-xs text-slate-300 leading-relaxed">Description of this artistic frame.</p>
+        <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 text-[11px] font-mono text-slate-400 space-y-1">
+          <div class="text-amber-400 font-bold mb-1">// EXIF METADATA</div>
+          <div id="lightbox-exif">Sony FX3 · 85mm f/1.4 · 1/500s · ISO 100</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- VIDEO THEATER MODAL (For Videography) -->
+  <div id="video-modal" class="fixed inset-0 z-50 bg-dark/95 backdrop-blur-xl hidden flex-col items-center justify-center p-4 sm:p-8 opacity-0 transition-opacity duration-300">
+    <button id="video-modal-close-btn" class="absolute top-6 right-6 z-50 w-11 h-11 rounded-full bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-white flex items-center justify-center text-lg border border-slate-700 transition-all cursor-pointer">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+
+    <div class="max-w-5xl w-full space-y-4">
+      <!-- Video Player Frame -->
+      <div class="relative aspect-video rounded-3xl overflow-hidden bg-black border border-slate-800 shadow-2xl">
+        <video id="html5-video-player" class="w-full h-full object-cover" controls playsinline>
+          <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+          Your browser does not support HTML5 video.
+        </video>
+        <!-- Canvas/Custom message indicator -->
+        <div id="video-mock-notice" class="absolute top-4 left-4 pointer-events-none px-3 py-1.5 rounded-lg bg-dark/80 backdrop-blur-md text-[11px] font-mono text-amber-400 border border-amber-500/30">
+          <i class="fa-solid fa-circle-play mr-1"></i> 4K Cinema Master Preview
+        </div>
+      </div>
+
+      <!-- Video Details Bar -->
+      <div class="p-6 rounded-2xl bg-dark-surface border border-slate-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div>
+          <span id="video-modal-category" class="text-xs font-mono text-cyan-400 font-bold uppercase tracking-wider">Wedding Film</span>
+          <h3 id="video-modal-title" class="text-xl font-bold text-white mt-0.5">Film Title</h3>
+          <p id="video-modal-desc" class="text-xs text-slate-400 mt-1 max-w-xl">Project description.</p>
+        </div>
+        <div class="text-right">
+          <span id="video-modal-gear" class="text-xs font-mono text-amber-400 block font-semibold">Sony FX3 · 24-70mm GM II</span>
+          <span id="video-modal-duration" class="text-xs text-slate-500">Duration: 04:45</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Floating Mobile Quick Actions (WhatsApp & Call) -->
+  <div class="sm:hidden fixed bottom-4 inset-x-4 z-40 flex items-center gap-3">
+    <a href="https://wa.me/919876543210?text=Hello%20Muthu%20Kumar,%20I%20would%20like%20to%20discuss%20a%20project!" target="_blank" rel="noopener noreferrer" class="flex-1 py-3 px-4 rounded-xl bg-emerald-500 text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-2xl">
+      <i class="fa-brands fa-whatsapp text-base"></i>
+      <span>WhatsApp</span>
+    </a>
+    <a href="tel:+919876543210" class="flex-1 py-3 px-4 rounded-xl bg-amber-500 text-dark font-black text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-2xl">
+      <i class="fa-solid fa-phone text-xs"></i>
+      <span>Call Now</span>
+    </a>
+  </div>
+
+  <!-- Back to Top Button -->
+  <button id="back-to-top" class="fixed bottom-20 sm:bottom-8 right-6 z-30 w-11 h-11 rounded-full bg-slate-800/90 hover:bg-amber-500 hover:text-dark text-slate-300 border border-slate-700 flex items-center justify-center text-sm shadow-xl transition-all opacity-0 pointer-events-none cursor-pointer">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <!-- Custom JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
