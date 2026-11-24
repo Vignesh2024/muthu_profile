@@ -226,6 +226,32 @@ document.addEventListener('DOMContentLoaded', () => {
   const videoModalCategory= document.getElementById('video-modal-category');
   const videoCloseBtn     = document.getElementById('video-modal-close-btn');
 
+  function formatVideoDuration(seconds) {
+    if (!Number.isFinite(seconds) || seconds <= 0) return '00:00';
+    const totalSeconds = Math.round(seconds);
+    const hours = Math.floor(totalSeconds / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const secs = totalSeconds % 60;
+    return hours > 0
+      ? `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`
+      : `${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+  }
+
+  document.querySelectorAll('.video-card video').forEach(cardVideo => {
+    const updateCardDuration = () => {
+      const card = cardVideo.closest('.video-card');
+      if (!card) return;
+      const duration = formatVideoDuration(cardVideo.duration);
+      card.setAttribute('data-video-duration', duration);
+
+      const durationBadge = card.querySelector('.absolute.bottom-3.right-3');
+      if (durationBadge) durationBadge.textContent = duration;
+    };
+
+    cardVideo.addEventListener('loadedmetadata', updateCardDuration);
+    if (cardVideo.readyState >= 1) updateCardDuration();
+  });
+
   function openVideoModal(card) {
     if (!videoModal || !card) return;
     const videoSrc = card.getAttribute('data-video-src');
