@@ -706,26 +706,6 @@ header.scrolled > div:first-child {
   }
 }
 
-@media (min-width: 1600px) {
-  main > section > .max-w-7xl,
-  main > section > div.max-w-7xl,
-  main > section > div > .max-w-7xl {
-    width: min(92vw, 1800px);
-    max-width: 1800px;
-  }
-
-  #hero {
-    min-height: 100svh;
-    padding-top: clamp(7rem, 11vh, 10rem);
-    padding-bottom: clamp(4rem, 8vh, 7rem);
-  }
-
-  #hero .max-w-md {
-    max-width: clamp(30rem, 34vw, 40rem);
-  }
-}
-
-
 /* ==========================================================================
    OFFLINE FALLBACK UTILITIES (Guarantees layout even without CDN)
    ========================================================================== */
@@ -831,3 +811,53 @@ header.scrolled > div:first-child {
 .font-extrabold { font-weight: 800; }
 .font-black { font-weight: 900; }
 .uppercase { text-transform: uppercase; }
+
+section[id] {
+  scroll-margin-top: 5rem;
+}
+
+@media (min-width: 1024px) {
+  main .max-w-7xl {
+    width: min(96vw, 2400px);
+    max-width: 2400px;
+  }
+
+  #main-header .max-w-screen-xl {
+    width: min(96vw, 2400px);
+    max-width: 2400px;
+  }
+
+  #hero {
+    min-height: 100vh;
+    min-height: 100svh;
+    padding-top: clamp(6.5rem, 11vh, 9rem);
+    padding-bottom: clamp(3rem, 7vh, 6rem);
+  }
+
+  #hero > .max-w-7xl {
+    gap: clamp(2rem, 4vw, 6rem);
+  }
+
+  #hero .max-w-md {
+    max-width: clamp(28rem, 34vw, 48rem);
+  }
+}
+
+@media (min-width: 1920px) {
+  main .max-w-7xl,
+  #main-header .max-w-screen-xl {
+    width: min(94vw, 2800px);
+    max-width: 2800px;
+  }
+
+  #hero .max-w-md {
+    max-width: clamp(44rem, 32vw, 56rem);
+  }
+}
+
+@media (min-width: 1024px) and (max-height: 700px) {
+  #hero {
+    padding-top: 6rem;
+    padding-bottom: 3rem;
+  }
+}

@@ -20,6 +20,19 @@ document.addEventListener('DOMContentLoaded', () => {
     photographySection.before(videographySection);
   }
 
+  const routeSegment = window.location.pathname.split('/').filter(Boolean).pop();
+  const routeSection = routeSegment ? document.getElementById(routeSegment) : null;
+  if (routeSection && !window.location.hash) {
+    const scrollToRouteSection = () => {
+      requestAnimationFrame(() => routeSection.scrollIntoView({ block: 'start' }));
+    };
+    if (document.readyState === 'complete') {
+      scrollToRouteSection();
+    } else {
+      window.addEventListener('load', scrollToRouteSection, { once: true });
+    }
+  }
+
   // =========================================================================
   // 1. DYNAMIC ROLE TYPING EFFECT
   // =========================================================================
