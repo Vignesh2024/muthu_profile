@@ -13,6 +13,13 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+  // Portfolio order: Videography first, then Photography.
+  const videographySection = document.getElementById('videography');
+  const photographySection = document.getElementById('photography');
+  if (videographySection && photographySection) {
+    photographySection.before(videographySection);
+  }
+
   // =========================================================================
   // 1. DYNAMIC ROLE TYPING EFFECT
   // =========================================================================
@@ -201,7 +208,9 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.classList.add('active');
       const filter = btn.getAttribute('data-vfilter');
       videoCards.forEach(card => {
-        const show = filter === 'all' || card.getAttribute('data-vcategory') === filter;
+        const cat = card.getAttribute('data-vcategory') || '';
+        const cats = cat.split(' ');
+        const show = filter === 'all' || cats.includes(filter);
         card.style.display = show ? 'flex' : 'none';
         if (show) { card.style.opacity = '0'; setTimeout(() => { card.style.opacity = '1'; }, 20); }
       });
@@ -219,6 +228,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function openVideoModal(card) {
     if (!videoModal || !card) return;
+    const videoSrc = card.getAttribute('data-video-src');
+    if (videoPlayer && videoSrc) {
+      videoPlayer.src = videoSrc;
+      videoPlayer.currentTime = 0;
+      videoPlayer.load();
+    }
     videoModalTitle.textContent    = card.getAttribute('data-video-title') || 'Film Preview';
     videoModalDesc.textContent     = card.getAttribute('data-video-desc') || '';
     videoModalGear.textContent     = card.getAttribute('data-video-gear') || '';
@@ -228,12 +243,18 @@ document.addEventListener('DOMContentLoaded', () => {
     videoModal.classList.add('flex');
     setTimeout(() => { videoModal.style.opacity = '1'; }, 10);
     document.body.style.overflow = 'hidden';
-    if (videoPlayer) videoPlayer.play().catch(() => {});
+    if (videoPlayer) {
+      videoPlayer.play().catch(() => {});
+    }
   }
 
   function closeVideoModal() {
     if (!videoModal) return;
-    if (videoPlayer) videoPlayer.pause();
+    if (videoPlayer) {
+      videoPlayer.pause();
+      videoPlayer.removeAttribute('src');
+      videoPlayer.load();
+    }
     videoModal.style.opacity = '0';
     setTimeout(() => {
       videoModal.classList.add('hidden');
@@ -251,6 +272,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (videoCloseBtn) videoCloseBtn.addEventListener('click', closeVideoModal);
   if (videoModal)    videoModal.addEventListener('click', (e) => { if (e.target === videoModal) closeVideoModal(); });
+
+  // Hover video preview on desktop
+  document.querySelectorAll('.video-card').forEach(card => {
+    const cardVideo = card.querySelector('video');
+    if (!cardVideo) return;
+    card.addEventListener('mouseenter', () => {
+      cardVideo.play().catch(() => {});
+    });
+    card.addEventListener('mouseleave', () => {
+      cardVideo.pause();
+      cardVideo.currentTime = 0;
+    });
+  });
 
 
   // =========================================================================
