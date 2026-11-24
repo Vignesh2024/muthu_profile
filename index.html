@@ -12,15 +12,18 @@
   <!-- Google Fonts: Inter, Syne (Cinematic), Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.tailwindcss.com">
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
 
   <!-- Font Awesome CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <!-- Tailwind CSS CDN + Configuration -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.tailwindcss.com"></script>
   <script>
-    tailwind.config = {
+    window.tailwind = window.tailwind || {};
+    window.tailwind.config = {
       darkMode: 'class',
       theme: {
         extend: {
@@ -80,7 +83,7 @@
           <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-amber-500 to-amber-300 flex items-center justify-center font-black text-dark text-sm shadow-md shadow-amber-500/30 group-hover:scale-110 transition-transform duration-300">
             MK
           </div>
-          <div>
+          <div class="header-brand-copy">
             <span class="font-extrabold tracking-widest text-white text-sm block group-hover:text-amber-400 transition-colors leading-tight uppercase">
               Muthu Kumar
             </span>
@@ -90,7 +93,7 @@
           </div>
         </a>
 
-        <!-- ── Desktop Nav — all 9 sections ── -->
+        <!-- ── Desktop Nav ── -->
         <nav class="hidden xl:flex items-center gap-0.5">
           <a href="#hero"        class="nav-link group px-3 py-2 rounded-lg text-[11px] font-semibold text-slate-400 hover:text-amber-400 transition-all relative">
             <span class="relative z-10">Home</span>
@@ -100,22 +103,17 @@
             <span class="relative z-10">About</span>
             <span class="nav-underline"></span>
           </a>
-          <a href="#videography" class="nav-link group px-3 py-2 rounded-lg text-[11px] font-semibold text-slate-400 hover:text-amber-400 transition-all relative">
-            <span class="relative z-10">Videography</span>
-            <span class="nav-underline"></span>
-          </a>
-          <a href="#photography" class="nav-link group px-3 py-2 rounded-lg text-[11px] font-semibold text-slate-400 hover:text-amber-400 transition-all relative">
-            <span class="relative z-10">Photography</span>
-            <span class="nav-underline"></span>
-          </a>
-          <a href="#editing"     class="nav-link group px-3 py-2 rounded-lg text-[11px] font-semibold text-slate-400 hover:text-amber-400 transition-all relative">
-            <span class="relative z-10">Video Editing</span>
-            <span class="nav-underline"></span>
-          </a>
-          <a href="#equipment"   class="nav-link group px-3 py-2 rounded-lg text-[11px] font-semibold text-slate-400 hover:text-amber-400 transition-all relative">
-            <span class="relative z-10">Gear</span>
-            <span class="nav-underline"></span>
-          </a>
+          <details class="nav-dropdown">
+            <summary class="nav-link nav-dropdown-toggle group px-3 py-2 rounded-lg text-[11px] font-semibold text-slate-400 hover:text-amber-400 transition-all relative" data-nav-targets="videography photography">
+              <span class="relative z-10">Portfolio</span>
+              <i class="fa-solid fa-chevron-down nav-dropdown-chevron text-[9px]" aria-hidden="true"></i>
+              <span class="nav-underline"></span>
+            </summary>
+            <div class="nav-dropdown-menu">
+              <a href="#videography" class="nav-dropdown-item"><i class="fa-solid fa-film"></i> Videography</a>
+              <a href="#photography" class="nav-dropdown-item"><i class="fa-solid fa-camera"></i> Photography</a>
+            </div>
+          </details>
           <a href="#services"    class="nav-link group px-3 py-2 rounded-lg text-[11px] font-semibold text-slate-400 hover:text-amber-400 transition-all relative">
             <span class="relative z-10">Services</span>
             <span class="nav-underline"></span>
@@ -132,10 +130,14 @@
 
         <!-- ── Right actions ── -->
         <div class="flex items-center gap-2 flex-shrink-0">
-          <!-- Hire Me CTA -->
-          <a href="#contact" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-amber-400 text-dark font-black text-[11px] uppercase tracking-wider shadow-md shadow-amber-500/30 hover:shadow-amber-500/50 hover:-translate-y-0.5 transition-all duration-200 whitespace-nowrap">
-            <i class="fa-solid fa-paper-plane text-[10px]"></i>
-            Hire Me
+          <span class="header-location-tag inline-flex items-center gap-1.5 text-[10px] font-semibold text-slate-400 whitespace-nowrap" aria-label="Based in Trichy, Tamil Nadu">
+            <i class="fa-solid fa-location-dot text-amber-400"></i>
+            Trichy, Tamil Nadu
+          </span>
+          <!-- Download Resume CTA -->
+          <a href="R.Muthu%20Kumar%20.pdf" download="Muthu-Kumar-Resume.pdf" class="header-download-cta inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-amber-400 text-dark font-black text-[11px] uppercase tracking-wider shadow-md shadow-amber-500/30 hover:shadow-amber-500/50 hover:-translate-y-0.5 transition-all duration-200 whitespace-nowrap" aria-label="Download Muthu Kumar resume">
+            <span>Download CV</span>
+            <i class="fa-solid fa-download text-[10px]"></i>
           </a>
           <!-- Mobile Hamburger (shows on < xl) -->
           <button id="mobile-menu-btn" class="xl:hidden w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-slate-300 hover:text-amber-400 hover:bg-white/10 transition-all" aria-label="Toggle menu">
@@ -161,14 +163,17 @@
               <i class="fa-solid fa-user text-sm text-amber-500"></i>
               <span class="text-[10px] font-bold uppercase tracking-wider">About</span>
             </a>
-            <a href="#videography" class="mobile-nav-link flex flex-col items-center gap-1.5 py-3 px-2 rounded-xl bg-white/[0.03] hover:bg-amber-500/10 hover:border-amber-500/40 border border-white/5 text-slate-300 hover:text-amber-400 transition-all text-center">
-              <i class="fa-solid fa-film text-sm text-amber-500"></i>
-              <span class="text-[10px] font-bold uppercase tracking-wider">Videography</span>
-            </a>
-            <a href="#photography" class="mobile-nav-link flex flex-col items-center gap-1.5 py-3 px-2 rounded-xl bg-white/[0.03] hover:bg-amber-500/10 hover:border-amber-500/40 border border-white/5 text-slate-300 hover:text-amber-400 transition-all text-center">
-              <i class="fa-solid fa-camera text-sm text-amber-500"></i>
-              <span class="text-[10px] font-bold uppercase tracking-wider">Photography</span>
-            </a>
+            <details class="mobile-nav-portfolio">
+              <summary class="mobile-nav-link flex flex-col items-center gap-1.5 py-3 px-2 rounded-xl bg-white/[0.03] hover:bg-amber-500/10 hover:border-amber-500/40 border border-white/5 text-slate-300 hover:text-amber-400 transition-all text-center">
+                <i class="fa-solid fa-images text-sm text-amber-500"></i>
+                <span class="text-[10px] font-bold uppercase tracking-wider">Portfolio</span>
+                <i class="fa-solid fa-chevron-down text-[9px] text-slate-500" aria-hidden="true"></i>
+              </summary>
+              <div class="mobile-portfolio-submenu">
+                <a href="#videography" class="mobile-nav-link"><i class="fa-solid fa-film"></i> Videography</a>
+                <a href="#photography" class="mobile-nav-link"><i class="fa-solid fa-camera"></i> Photography</a>
+              </div>
+            </details>
             <a href="#editing"     class="mobile-nav-link flex flex-col items-center gap-1.5 py-3 px-2 rounded-xl bg-white/[0.03] hover:bg-amber-500/10 hover:border-amber-500/40 border border-white/5 text-slate-300 hover:text-amber-400 transition-all text-center">
               <i class="fa-solid fa-scissors text-sm text-amber-500"></i>
               <span class="text-[10px] font-bold uppercase tracking-wider">Video Editing</span>
@@ -189,6 +194,11 @@
               <i class="fa-regular fa-envelope text-sm text-amber-500"></i>
               <span class="text-[10px] font-bold uppercase tracking-wider">Contact</span>
             </a>
+          </div>
+
+          <div class="flex items-center justify-center gap-2 mb-4 py-2.5 rounded-xl bg-white/[0.03] border border-white/10 text-xs font-semibold text-slate-300">
+            <i class="fa-solid fa-location-dot text-amber-400"></i>
+            <span>Based in Trichy, Tamil Nadu</span>
           </div>
 
           <!-- Bottom CTA row -->
@@ -330,7 +340,7 @@
               <div class="absolute -top-16 -right-16 w-56 h-56 rounded-full bg-amber-500/20 blur-2xl"></div>
               <div class="absolute -bottom-16 -left-16 w-56 h-56 rounded-full bg-cyan-500/20 blur-2xl"></div>
               
-              <img src="assets/images/muthu-portrait.jpg" alt="Muthu Kumar - Photographer & Videographer" class="w-full h-auto object-cover relative z-10 transition-transform duration-700 group-hover:scale-105">
+              <img src="assets/images/muthu-portrait.jpg" alt="Muthu Kumar - Photographer & Videographer" class="w-full h-auto object-cover relative z-10 transition-transform duration-700 group-hover:scale-105" fetchpriority="high" decoding="async">
 
               <!-- Glass Overlay Bar at bottom of photo -->
               <div class="absolute bottom-0 inset-x-0 z-20 p-4 bg-gradient-to-t from-dark via-dark/80 to-transparent">
@@ -385,7 +395,7 @@
           <!-- Left Column: Muthu in Action Photo + Highlights -->
           <div class="lg:col-span-5 relative">
             <div class="relative rounded-3xl overflow-hidden border border-slate-800 bg-dark-surface shadow-2xl group">
-              <img src="assets/images/muthu-working.jpg" alt="Muthu Kumar behind the edit and camera" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700">
+              <img src="assets/images/muthu-working.jpg" alt="Muthu Kumar behind the edit and camera" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" decoding="async">
               <div class="absolute inset-0 bg-gradient-to-t from-dark via-transparent to-transparent opacity-80"></div>
               
               <!-- Floating Experience Card -->
@@ -739,10 +749,10 @@
         <div id="video-gallery" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           
           <!-- Video 1: Wedding Film -->
-          <div class="video-card group rounded-2xl overflow-hidden border border-slate-800 bg-dark-surface shadow-xl flex flex-col" data-vcategory="wedding-films" data-video-src="assets/portfolio/video/wedding-videos-1.mp4" data-video-title="Anbe Sivam - The Grand Royal Wedding Film" data-video-desc="A 4K cinematic wedding highlight capturing timeless South Indian traditions, emotional parent blessings, and breathtaking drone perspectives in Mahabalipuram." data-video-gear="Sony FX3 Cinema Line · 24-70mm f/2.8 GM II · DJI RS 3 Pro" data-video-duration="" data-video-category="Wedding Film">
+          <div class="video-card group rounded-2xl overflow-hidden border border-slate-800 bg-dark-surface shadow-xl flex flex-col" data-vcategory="wedding-films" data-video-src="assets/portfolio/video/wedding-videos-1.mp4" data-video-title="Anbe Sivam - The Grand Royal Wedding Film" data-video-desc="A 4K cinematic wedding highlight capturing timeless South Indian traditions, emotional parent blessings, and breathtaking drone perspectives in Mahabalipuram." data-video-gear="Sony FX3 Cinema Line · 24-70mm f/2.8 GM II · DJI RS 3 Pro" data-video-duration="01:23" data-video-category="Wedding Film">
             <!-- Thumbnail & Play Overlay -->
             <div class="relative aspect-video overflow-hidden bg-slate-900 cursor-pointer video-play-trigger">
-              <video src="assets/portfolio/video/wedding-videos-1.mp4" muted loop playsinline preload="metadata" class="w-full h-full object-cover"></video>
+              <video data-src="assets/portfolio/video/wedding-videos-1.mp4" muted loop playsinline preload="none" class="w-full h-full object-cover"></video>
               <div class="absolute inset-0 bg-dark/40 group-hover:bg-dark/20 transition-colors flex items-center justify-center">
                 <div class="w-14 h-14 rounded-full bg-amber-500 text-dark flex items-center justify-center text-xl shadow-lg shadow-amber-500/40 group-hover:scale-110 transition-transform">
                   <i class="fa-solid fa-play ml-1"></i>
@@ -752,7 +762,7 @@
                 4K Cinema
               </span>
               <span class="absolute bottom-3 right-3 px-2 py-0.5 rounded bg-dark/90 text-[11px] font-mono text-slate-300">
-                Loading
+                01:23
               </span>
             </div>
             <!-- Card Body -->
@@ -770,9 +780,9 @@
           </div>
 
           <!-- Video 2: Pre-Wedding Film -->
-          <div class="video-card group rounded-2xl overflow-hidden border border-slate-800 bg-dark-surface shadow-xl flex flex-col" data-vcategory="pre-wedding" data-video-src="assets/portfolio/video/wedding-videos-2.mp4" data-video-title="Waves & Vows - Pre-Wedding Cinema" data-video-desc="Captured along the serene sunrise coastlines of Dhanushkodi and Pondicherry. Soft romantic lighting, natural candid laughter, and poem narration." data-video-gear="Sony A7 IV · 35mm & 85mm GM · PolarPro VND" data-video-duration="" data-video-category="Pre-Wedding Film">
+          <div class="video-card group rounded-2xl overflow-hidden border border-slate-800 bg-dark-surface shadow-xl flex flex-col" data-vcategory="pre-wedding" data-video-src="assets/portfolio/video/wedding-videos-2.mp4" data-video-title="Waves & Vows - Pre-Wedding Cinema" data-video-desc="Captured along the serene sunrise coastlines of Dhanushkodi and Pondicherry. Soft romantic lighting, natural candid laughter, and poem narration." data-video-gear="Sony A7 IV · 35mm & 85mm GM · PolarPro VND" data-video-duration="01:40" data-video-category="Pre-Wedding Film">
             <div class="relative aspect-video overflow-hidden bg-slate-900 cursor-pointer video-play-trigger">
-              <video src="assets/portfolio/video/wedding-videos-2.mp4" muted loop playsinline preload="metadata" class="w-full h-full object-cover"></video>
+              <video data-src="assets/portfolio/video/wedding-videos-2.mp4" muted loop playsinline preload="none" class="w-full h-full object-cover"></video>
               <div class="absolute inset-0 bg-dark/40 group-hover:bg-dark/20 transition-colors flex items-center justify-center">
                 <div class="w-14 h-14 rounded-full bg-cyan-500 text-dark flex items-center justify-center text-xl shadow-lg shadow-cyan-500/40 group-hover:scale-110 transition-transform">
                   <i class="fa-solid fa-play ml-1"></i>
@@ -782,7 +792,7 @@
                 Cinematic Love
               </span>
               <span class="absolute bottom-3 right-3 px-2 py-0.5 rounded bg-dark/90 text-[11px] font-mono text-slate-300">
-                Loading
+                01:40
               </span>
             </div>
             <div class="p-5 flex-1 flex flex-col justify-between space-y-3">
@@ -799,9 +809,9 @@
           </div>
 
           <!-- Video 3: Short Film -->
-          <div class="video-card group rounded-2xl overflow-hidden border border-slate-800 bg-dark-surface shadow-xl flex flex-col" data-vcategory="short-films" data-video-src="assets/portfolio/video/final-bike-out.mp4" data-video-title="Echoes of the Soil - Documentary Short" data-video-desc="Award-winning indie documentary short exploring agricultural heritage and the lives of generational farmers in Thanjavur." data-video-gear="Sony FX3 Cinema · 70-200mm GM · DaVinci Resolve Studio" data-video-duration="" data-video-category="Short Film">
+          <div class="video-card group rounded-2xl overflow-hidden border border-slate-800 bg-dark-surface shadow-xl flex flex-col" data-vcategory="short-films" data-video-src="assets/portfolio/video/final-bike-out.mp4" data-video-title="Echoes of the Soil - Documentary Short" data-video-desc="Award-winning indie documentary short exploring agricultural heritage and the lives of generational farmers in Thanjavur." data-video-gear="Sony FX3 Cinema · 70-200mm GM · DaVinci Resolve Studio" data-video-duration="00:27" data-video-category="Short Film">
             <div class="relative aspect-video overflow-hidden bg-slate-900 cursor-pointer video-play-trigger">
-              <video src="assets/portfolio/video/final-bike-out.mp4" muted loop playsinline preload="metadata" class="w-full h-full object-cover"></video>
+              <video data-src="assets/portfolio/video/final-bike-out.mp4" muted loop playsinline preload="none" class="w-full h-full object-cover"></video>
               <div class="absolute inset-0 bg-dark/40 group-hover:bg-dark/20 transition-colors flex items-center justify-center">
                 <div class="w-14 h-14 rounded-full bg-emerald-500 text-dark flex items-center justify-center text-xl shadow-lg shadow-emerald-500/40 group-hover:scale-110 transition-transform">
                   <i class="fa-solid fa-play ml-1"></i>
@@ -811,7 +821,7 @@
                 Film Festival Entry
               </span>
               <span class="absolute bottom-3 right-3 px-2 py-0.5 rounded bg-dark/90 text-[11px] font-mono text-slate-300">
-                Loading
+                00:27
               </span>
             </div>
             <div class="p-5 flex-1 flex flex-col justify-between space-y-3">
@@ -828,9 +838,9 @@
           </div>
 
           <!-- Video 4: Event Film -->
-          <div class="video-card group rounded-2xl overflow-hidden border border-slate-800 bg-dark-surface shadow-xl flex flex-col" data-vcategory="event-films" data-video-src="assets/portfolio/video/wedding-videos-3.mp4" data-video-title="Neon Nights - Electronic Music Festival Aftermovie" data-video-desc="High-speed dynamic edits, audio transitions, custom sound FX, and color pop designed for maximum hype and adrenaline." data-video-gear="Multi-Cam Sony A7S III & FX3 · DJI Ronin" data-video-duration="" data-video-category="Event Film">
+          <div class="video-card group rounded-2xl overflow-hidden border border-slate-800 bg-dark-surface shadow-xl flex flex-col" data-vcategory="event-films" data-video-src="assets/portfolio/video/wedding-videos-3.mp4" data-video-title="Neon Nights - Electronic Music Festival Aftermovie" data-video-desc="High-speed dynamic edits, audio transitions, custom sound FX, and color pop designed for maximum hype and adrenaline." data-video-gear="Multi-Cam Sony A7S III & FX3 · DJI Ronin" data-video-duration="00:34" data-video-category="Event Film">
             <div class="relative aspect-video overflow-hidden bg-slate-900 cursor-pointer video-play-trigger">
-              <video src="assets/portfolio/video/wedding-videos-3.mp4" muted loop playsinline preload="metadata" class="w-full h-full object-cover"></video>
+              <video data-src="assets/portfolio/video/wedding-videos-3.mp4" muted loop playsinline preload="none" class="w-full h-full object-cover"></video>
               <div class="absolute inset-0 bg-dark/40 group-hover:bg-dark/20 transition-colors flex items-center justify-center">
                 <div class="w-14 h-14 rounded-full bg-rose-500 text-white flex items-center justify-center text-xl shadow-lg shadow-rose-500/40 group-hover:scale-110 transition-transform">
                   <i class="fa-solid fa-play ml-1"></i>
@@ -840,7 +850,7 @@
                 High Energy
               </span>
               <span class="absolute bottom-3 right-3 px-2 py-0.5 rounded bg-dark/90 text-[11px] font-mono text-slate-300">
-                Loading
+                00:34
               </span>
             </div>
             <div class="p-5 flex-1 flex flex-col justify-between space-y-3">
@@ -857,9 +867,9 @@
           </div>
 
           <!-- Video 5: Cinematic Reels -->
-          <div class="video-card group rounded-2xl overflow-hidden border border-slate-800 bg-dark-surface shadow-xl flex flex-col" data-vcategory="reels" data-video-src="assets/portfolio/video/motion-graphics-video.mp4" data-video-title="Street Soul Chennai - Viral 9:16 Cinematic Reel" data-video-desc="Vertically framed high-impact visual series featuring Chennai's iconic Chai stalls, Marina Beach twilight, and bustling train journeys." data-video-gear="Sony FX3 · 24mm f/1.4 GM · Gyroflow Stabilization" data-video-duration="" data-video-category="Cinematic Reels">
+          <div class="video-card group rounded-2xl overflow-hidden border border-slate-800 bg-dark-surface shadow-xl flex flex-col" data-vcategory="reels" data-video-src="assets/portfolio/video/motion-graphics-video.mp4" data-video-title="Street Soul Chennai - Viral 9:16 Cinematic Reel" data-video-desc="Vertically framed high-impact visual series featuring Chennai's iconic Chai stalls, Marina Beach twilight, and bustling train journeys." data-video-gear="Sony FX3 · 24mm f/1.4 GM · Gyroflow Stabilization" data-video-duration="00:31" data-video-category="Cinematic Reels">
             <div class="relative aspect-video overflow-hidden bg-slate-900 cursor-pointer video-play-trigger">
-              <video src="assets/portfolio/video/motion-graphics-video.mp4" muted loop playsinline preload="metadata" class="w-full h-full object-cover"></video>
+              <video data-src="assets/portfolio/video/motion-graphics-video.mp4" muted loop playsinline preload="none" class="w-full h-full object-cover"></video>
               <div class="absolute inset-0 bg-dark/40 group-hover:bg-dark/20 transition-colors flex items-center justify-center">
                 <div class="w-14 h-14 rounded-full bg-amber-400 text-dark flex items-center justify-center text-xl shadow-lg shadow-amber-400/40 group-hover:scale-110 transition-transform">
                   <i class="fa-solid fa-play ml-1"></i>
@@ -869,7 +879,7 @@
                 Instagram Viral
               </span>
               <span class="absolute bottom-3 right-3 px-2 py-0.5 rounded bg-dark/90 text-[11px] font-mono text-slate-300">
-                Loading
+                00:31
               </span>
             </div>
             <div class="p-5 flex-1 flex flex-col justify-between space-y-3">
@@ -935,7 +945,7 @@
           <div id="grading-slider-container" class="relative w-full aspect-video sm:aspect-[21/9] rounded-2xl overflow-hidden select-none cursor-ew-resize border border-slate-700/80 shadow-2xl">
             
             <!-- Graded (AFTER) Image (Bottom Full Layer) -->
-            <img id="grading-after-img" src="assets/portfolio/grading-after.jpg" alt="Final Cinematic Grade" class="absolute inset-0 w-full h-full object-cover">
+            <img id="grading-after-img" src="assets/portfolio/grading-after.jpg" alt="Final Cinematic Grade" class="absolute inset-0 w-full h-full object-cover" loading="lazy" decoding="async">
             
             <!-- Graded Badge (Right) -->
             <div class="absolute top-4 right-4 z-10 px-3.5 py-1.5 rounded-xl bg-dark/85 backdrop-blur-md border border-amber-500/40 text-amber-300 text-xs font-bold uppercase tracking-wider flex items-center gap-2 shadow-lg">
@@ -945,7 +955,7 @@
 
             <!-- Flat Raw (BEFORE) Image (Clipped Layer) -->
             <div id="grading-before-wrapper" class="absolute inset-0 w-1/2 h-full overflow-hidden border-r-2 border-white/90 shadow-[0_0_20px_rgba(245,158,11,0.5)]">
-              <img id="grading-before-img" src="assets/portfolio/grading-before.jpg" alt="Raw Flat S-Log3 Profile" class="absolute inset-0 w-full h-full object-cover max-w-none">
+              <img id="grading-before-img" src="assets/portfolio/grading-before.jpg" alt="Raw Flat S-Log3 Profile" class="absolute inset-0 w-full h-full object-cover max-w-none" loading="lazy" decoding="async">
               
               <!-- Before Badge (Left) -->
               <div class="absolute top-4 left-4 z-10 px-3.5 py-1.5 rounded-xl bg-dark/85 backdrop-blur-md border border-slate-700 text-slate-300 text-xs font-bold uppercase tracking-wider flex items-center gap-2 shadow-lg">
@@ -1233,7 +1243,7 @@
             <!-- DaVinci Resolve -->
             <div class="p-4 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-amber-500/50 transition-all flex flex-col items-center text-center gap-3 group">
               <div class="w-14 h-14 rounded-xl overflow-hidden bg-slate-800 p-1 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                <img src="assets/software/davinci-resolve.jpg" alt="DaVinci Resolve Studio" class="w-full h-full object-contain rounded-lg">
+                <img src="assets/software/davinci-resolve.jpg" alt="DaVinci Resolve Studio" class="w-full h-full object-contain rounded-lg" loading="lazy" decoding="async">
               </div>
               <div>
                 <h5 class="text-xs font-bold text-white">DaVinci Resolve</h5>
@@ -1245,7 +1255,7 @@
             <!-- Adobe Premiere Pro -->
             <div class="p-4 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-purple-500/50 transition-all flex flex-col items-center text-center gap-3 group">
               <div class="w-14 h-14 rounded-xl overflow-hidden bg-slate-800 p-1 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                <img src="assets/software/premiere-pro.jpg" alt="Adobe Premiere Pro" class="w-full h-full object-contain rounded-lg">
+                <img src="assets/software/premiere-pro.jpg" alt="Adobe Premiere Pro" class="w-full h-full object-contain rounded-lg" loading="lazy" decoding="async">
               </div>
               <div>
                 <h5 class="text-xs font-bold text-white">Premiere Pro</h5>
@@ -1257,7 +1267,7 @@
             <!-- Adobe After Effects -->
             <div class="p-4 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-indigo-500/50 transition-all flex flex-col items-center text-center gap-3 group">
               <div class="w-14 h-14 rounded-xl overflow-hidden bg-slate-800 p-1 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                <img src="assets/software/after-effects.jpg" alt="Adobe After Effects" class="w-full h-full object-contain rounded-lg">
+                <img src="assets/software/after-effects.jpg" alt="Adobe After Effects" class="w-full h-full object-contain rounded-lg" loading="lazy" decoding="async">
               </div>
               <div>
                 <h5 class="text-xs font-bold text-white">After Effects</h5>
@@ -1269,7 +1279,7 @@
             <!-- Adobe Photoshop -->
             <div class="p-4 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-sky-500/50 transition-all flex flex-col items-center text-center gap-3 group">
               <div class="w-14 h-14 rounded-xl overflow-hidden bg-slate-800 p-1 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                <img src="assets/software/photoshop.jpg" alt="Adobe Photoshop" class="w-full h-full object-contain rounded-lg">
+                <img src="assets/software/photoshop.jpg" alt="Adobe Photoshop" class="w-full h-full object-contain rounded-lg" loading="lazy" decoding="async">
               </div>
               <div>
                 <h5 class="text-xs font-bold text-white">Photoshop</h5>
@@ -1281,7 +1291,7 @@
             <!-- Apple Final Cut Pro -->
             <div class="p-4 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-pink-500/50 transition-all flex flex-col items-center text-center gap-3 group">
               <div class="w-14 h-14 rounded-xl overflow-hidden bg-slate-800 p-1 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                <img src="assets/software/final-cut-pro.jpg" alt="Final Cut Pro" class="w-full h-full object-contain rounded-lg">
+                <img src="assets/software/final-cut-pro.jpg" alt="Final Cut Pro" class="w-full h-full object-contain rounded-lg" loading="lazy" decoding="async">
               </div>
               <div>
                 <h5 class="text-xs font-bold text-white">Final Cut Pro</h5>
@@ -1293,7 +1303,7 @@
             <!-- Avid Media Composer -->
             <div class="p-4 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-violet-500/50 transition-all flex flex-col items-center text-center gap-3 group">
               <div class="w-14 h-14 rounded-xl overflow-hidden bg-slate-800 p-1 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                <img src="assets/software/avid.jpg" alt="Avid Media Composer" class="w-full h-full object-contain rounded-lg">
+                <img src="assets/software/avid.jpg" alt="Avid Media Composer" class="w-full h-full object-contain rounded-lg" loading="lazy" decoding="async">
               </div>
               <div>
                 <h5 class="text-xs font-bold text-white">Avid Media</h5>
@@ -1305,7 +1315,7 @@
             <!-- Figma -->
             <div class="p-4 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-orange-500/50 transition-all flex flex-col items-center text-center gap-3 group">
               <div class="w-14 h-14 rounded-xl overflow-hidden bg-slate-800 p-1 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                <img src="assets/software/figma.jpg" alt="Figma Design" class="w-full h-full object-contain rounded-lg">
+                <img src="assets/software/figma.jpg" alt="Figma Design" class="w-full h-full object-contain rounded-lg" loading="lazy" decoding="async">
               </div>
               <div>
                 <h5 class="text-xs font-bold text-white">Figma</h5>
@@ -1810,8 +1820,8 @@
                   </div>
                   <div>
                     <span class="text-[11px] font-mono text-cyan-400 font-bold uppercase">Location & Studio</span>
-                    <h4 class="text-sm font-bold text-white">Chennai, India</h4>
-                    <p class="text-xs text-slate-400">Available for Destination Shoots Worldwide</p>
+                    <h4 class="text-sm font-bold text-white">Trichy, Tamil Nadu, India</h4>
+                    <p class="text-xs text-slate-400">Serving Tamil Nadu and available for destination shoots worldwide</p>
                   </div>
                 </div>
 
@@ -2013,8 +2023,7 @@
     <div class="max-w-5xl w-full space-y-4">
       <!-- Video Player Frame -->
       <div class="relative aspect-video rounded-3xl overflow-hidden bg-black border border-slate-800 shadow-2xl">
-        <video id="html5-video-player" class="w-full h-full object-cover" controls playsinline>
-          <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+        <video id="html5-video-player" class="w-full h-full object-cover" controls playsinline preload="none">
           Your browser does not support HTML5 video.
         </video>
         <!-- Canvas/Custom message indicator -->

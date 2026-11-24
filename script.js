@@ -226,6 +226,24 @@ document.addEventListener('DOMContentLoaded', () => {
   const videoModalCategory= document.getElementById('video-modal-category');
   const videoCloseBtn     = document.getElementById('video-modal-close-btn');
 
+  const loadVideoPreview = (video) => {
+    const source = video.getAttribute('data-src');
+    if (!source || video.getAttribute('src')) return;
+    video.preload = 'metadata';
+    video.src = source;
+    video.load();
+  };
+
+  const videoPreviewObserver = 'IntersectionObserver' in window
+    ? new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        loadVideoPreview(entry.target);
+        videoPreviewObserver.unobserve(entry.target);
+      });
+    }, { rootMargin: '120px 0px' })
+    : null;
+
   function formatVideoDuration(seconds) {
     if (!Number.isFinite(seconds) || seconds <= 0) return '00:00';
     const totalSeconds = Math.round(seconds);
@@ -249,15 +267,19 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     cardVideo.addEventListener('loadedmetadata', updateCardDuration);
+    cardVideo.addEventListener('loadedmetadata', () => {
+      if (cardVideo.currentTime === 0 && cardVideo.duration > 0) cardVideo.currentTime = 0.1;
+    });
     if (cardVideo.readyState >= 1) updateCardDuration();
+    if (videoPreviewObserver) videoPreviewObserver.observe(cardVideo);
   });
 
   function openVideoModal(card) {
     if (!videoModal || !card) return;
     const videoSrc = card.getAttribute('data-video-src');
+    card.querySelector('video')?.pause();
     if (videoPlayer && videoSrc) {
       videoPlayer.src = videoSrc;
-      videoPlayer.currentTime = 0;
       videoPlayer.load();
     }
     videoModalTitle.textContent    = card.getAttribute('data-video-title') || 'Film Preview';
@@ -304,6 +326,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const cardVideo = card.querySelector('video');
     if (!cardVideo) return;
     card.addEventListener('mouseenter', () => {
+      loadVideoPreview(cardVideo);
       cardVideo.play().catch(() => {});
     });
     card.addEventListener('mouseleave', () => {
@@ -502,7 +525,9 @@ _Sent via portfolio_`;
     });
 
     desktopLinks.forEach(link => {
-      const isActive = link.getAttribute('href') === '#' + activeId;
+      const targets = link.getAttribute('data-nav-targets')
+        || (link.getAttribute('href') || '').replace(/^#/, '');
+      const isActive = targets.split(/\s+/).includes(activeId);
       link.classList.toggle('active', isActive);
     });
   }, { passive: true });
@@ -515,7 +540,7 @@ _Sent via portfolio_`;
   // =========================================================================
   const mobileMenuBtn  = document.getElementById('mobile-menu-btn');
   const mobileMenu     = document.getElementById('mobile-menu');
-  const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+  const mobileNavLinks = document.querySelectorAll('#mobile-menu a.mobile-nav-link');
   let menuOpen = false;
 
   function toggleMenu(forceClose = false) {
@@ -532,7 +557,10 @@ _Sent via portfolio_`;
   }
 
   mobileMenuBtn?.addEventListener('click', () => toggleMenu());
-  mobileNavLinks.forEach(link => link.addEventListener('click', () => toggleMenu(true)));
+  mobileNavLinks.forEach(link => link.addEventListener('click', () => {
+    link.closest('.mobile-nav-portfolio')?.removeAttribute('open');
+    toggleMenu(true);
+  }));
 
   // Close menu on outside click
   document.addEventListener('click', (e) => {
